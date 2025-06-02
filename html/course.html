@@ -4,19 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BeeYond</title>
+    <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/course.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <header class="header">
-        <div class="logo">BeeYond</div>
-        <nav class="nav">
-            <a href="../html/home.html">Home</a>
-            <a href="#courses">Courses</a>
-            <a href="#subscription">Subscription</a>
-            <a href="#about">About Us</a>
-        </nav>
-        <a href="../html/signup.html" class="sign-up-btn">Sign Up</a>
+        <div class="nav-container">
+            <div class="logo">
+                <h1>BeeYond</h1>
+            </div>
+            <nav class="nav-menu">
+                <a href="../html/home.html" class="nav-link active">Home</a>
+                <a href="../html/course.html" class="nav-link">Courses</a>
+                <a href="../html/subscription.html" class="nav-link">Subscription</a>
+                <a href="../aboutus.html" class="nav-link">About Us</a>
+            </nav>
+            <button type="button" class="login-btn">Login</button>
+        </div>
     </header>
     <div class="container">
         <div class="course-header">
@@ -126,18 +131,20 @@
     </div>
     <footer class="footer">
         <div class="footer-content">
-            <div class="footer-logo">BeeYond</div>
+            <div class="footer-brand">
+                <h3>BeeYond</h3>
+                <p>©2025 BeeYond. All rights reserved.</p>
+            </div>
             <div class="footer-links">
-                <a href="#contact">Contact Us</a>
+                <span>Contact us</span>
+                <div class="social-links">
+                    <ul>
+                        <li><a href="https://instagram.com"><img src="assets/lets-icons--insta.svg" alt="Instagram"></a></li>
+                        <li><a href="mailto:support@beeyond.com"><img src="assets/material-symbols--mail-outline.svg" alt="Email"></a></li>
+                        <li><a href="tel:+628232894792"><img src="assets/mdi--telephone.svg" alt="Telephone"></a></li>
+                    </ul>
+                </div>
             </div>
-            <div class="social-icons">
-                <a href="#" class="social-icon">📧</a>
-                <a href="#" class="social-icon">📱</a>
-                <a href="#" class="social-icon">🌐</a>
-            </div>
-        </div>
-        <div class="copyright">
-            ©2025 BeeYond. All rights reserved.
         </div>
     </footer>
     <script src="../js/course.js"></script>
