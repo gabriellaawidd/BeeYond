@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BeeYond</title>
+    <link rel="stylesheet" href="../css/home.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <div class="nav-container">
+            <div class="logo">
+                <h1>BeeYond</h1>
+            </div>
+            <nav class="nav-menu">
+                <a href="../html/home.html" class="nav-link active">Home</a>
+                <a href="../html/course.html" class="nav-link">Courses</a>
+                <a href="../html/dashboard.html" class="nav-link">Dashboard</a>
+                <a href="../aboutus.html" class="nav-link">About Us</a>
+            </nav>
+            <button type="button" class="login-btn">Login</button>
+        </div>
+    </header>
+    <main class="main-content">
+        <section class="hero-section">
+            <div class="hero-content">
+                <h1 class="hero-title">BeeYond Learning, BeeYond Limits</h1>
+                <p class="hero-description">
+                    Unlock your potential with expert-led courses made for university students. Learn
+                    anywhere, anytime, and go beyond the classroom.
+                </p>
+                <button type="button" class="cta-button">Let's Start</button>
+            </div>
+        </section>
+        <section class="welcome-section">
+            <div class="welcome-header">
+                <h2>Welcome back, User.</h2>
+                <p class="welcome-subtitle">News from the BeeYond</p>
+            </div>
+            <div class="news-container">
+                <div class="news-left">
+                    <h3>New courses added:</h3>
+                    <ul class="course-list">
+                        <li>Calculus</li>
+                        <li>Basic Statistics</li>
+                        <li>Algorithms and Programming</li>
+                        <li class="more-text">and additional features</li>
+                    </ul>
+                </div>
+                <div class="news-center">
+                    <h3>Now available down below!</h3>
+                    <div class="featured-courses">
+                        <div class="featured-course-card">
+                            <h4>Algorithms and Programming</h4>
+                            <p class="course-type">Course type: Science</p>
+                            <p class="course-duration">Course duration: 10 hours</p>
+                            <p class="course-desc-label">Course description:</p>
+                            <p class="course-description">This is a course where you study about algorithms</p>
+                        </div>
+                        <div class="featured-course-card">
+                            <h4>Basic statistics</h4>
+                            <p class="course-type">Course type: Maths</p>
+                            <p class="course-duration">Course duration: 20 hours</p>
+                            <p class="course-desc-label">Course description:</p>
+                            <p class="course-description">This is a course where you study about basic statistics</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="news-right">
+                    <h3>More news:</h3>
+                    <ul class="news-list">
+                        <li>Subscription changes</li>
+                        <li>New features guide</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <section class="progress-section">
+            <h2 class="section-title">In Progress</h2>
+            <div class="course-grid">
+                <div class="course-card progress-card" data-course-id="calc1">
+                    <h3>Calculus</h3>
+                    <div class="progress-bar">
+                        <div class="progress-fill" data-progress="0"></div>
+                    </div>
+                    <span class="progress-text">0%</span>
+                </div>
+                <div class="course-card progress-card" data-course-id="calc2">
+                    <h3>Calculus</h3>
+                    <div class="progress-bar">
+                        <div class="progress-fill" data-progress="50"></div>
+                    </div>
+                    <span class="progress-text">50%</span>
+                </div>
+                <div class="course-card progress-card" data-course-id="calc3">
+                    <h3>Calculus</h3>
+                    <div class="progress-bar">
+                        <div class="progress-fill" data-progress="100"></div>
+                    </div>
+                    <span class="progress-text">100%</span>
+                </div>
+            </div>
+        </section>
+        <section class="popular-section">
+            <h2 class="section-title">Popular Courses</h2>
+            <div class="course-grid">
+                <div class="course-card popular-card">
+                    <h3>Calculus</h3>
+                    <p class="course-description">Comprehensive calculus course covering limits, derivatives, and integrals for university students.</p>
+                </div>
+                <div class="course-card popular-card">
+                    <h3>Calculus</h3>
+                    <p class="course-description">Advanced mathematical concepts including differential equations and multivariable calculus applications.</p>
+                </div>
+                <div class="course-card popular-card">
+                    <h3>Calculus</h3>
+                    <p class="course-description">Complete calculus fundamentals with practical problem-solving techniques and real-world examples.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h3>BeeYond</h3>
+                <p>©2025 BeeYond. All rights reserved.</p>
+            </div>
+            <div class="footer-links">
+                <span>Contact us</span>
+                <div class="social-links">
+                    <ul>
+                        <li><a href="https://instagram.com"><img src="assets/lets-icons--insta.svg" alt="Instagram"></a></li>
+                        <li><a href="mailto:support@beeyond.com"><img src="assets/material-symbols--mail-outline.svg" alt="Email"></a></li>
+                        <li><a href="tel:+628232894792"><img src="assets/mdi--telephone.svg" alt="Telephone"></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <div id="notification-container"></div>
+    <script src="../js/home.js"></script>
+</body>
+</html>
