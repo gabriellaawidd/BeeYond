@@ -1,0 +1,354 @@
+:root {
+    --button: #FF8600;
+    --primary: #27187E;
+    --background: #F1F2F6;
+    --nav-color: #758BFD;
+    --border-weight-size: 3px;
+    --corner-radius-size: 12px;
+    --card-background: #FFFFFF; 
+    --purple-button: #8A2BE2; 
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background-color: var(--background);
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--primary);
+    color: white;
+    padding: 15px 40px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    flex-wrap: wrap;
+}
+
+.navbar .logo {
+    font-size: 24px;
+    font-weight: bold;
+    margin-right: 20px;
+}
+
+.navbar nav {
+    flex-grow: 1;
+}
+
+.navbar nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.navbar nav ul li {
+    margin-right: 30px;
+}
+
+.navbar nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.navbar nav ul li a:hover {
+    color: var(--nav-color);
+}
+
+.profile-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+}
+
+.profile-button img {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: 2px solid white;
+}
+
+
+/* Content Area */
+.content-area {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 20px; 
+    background-color: #E6E8FA; 
+}
+
+.subscription-card {
+    background-color: var(--card-background);
+    border-radius: var(--corner-radius-size);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    display: flex;
+    max-width: 900px; 
+    width: 100%;
+    overflow: hidden; 
+}
+
+.subscription-summary {
+    flex: 1;
+    padding: 30px;
+    background-color: var(--card-background); 
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    gap: 15px;
+    border-right: 1px solid #eee; 
+}
+
+.subscription-summary h2 {
+    font-size: 28px;
+    color: var(--primary);
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+.subscription-summary .price-details {
+    display: flex;
+    align-items: baseline;
+    font-size: 36px;
+    font-weight: bold;
+    color: #000;
+}
+
+.subscription-summary .price-details .per-month {
+    font-size: 18px;
+    font-weight: normal;
+    margin-left: 5px;
+}
+
+.subscription-summary .price-details .tax {
+    font-size: 18px;
+    font-weight: normal;
+    color: #666;
+    margin-left: 15px;
+}
+
+.subscription-summary .total-price {
+    font-size: 28px;
+    font-weight: bold;
+    margin-top: 20px;
+    color: var(--primary);
+}
+
+.payment-form {
+    flex: 2; 
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.payment-form h3 {
+    font-size: 22px;
+    color: var(--primary);
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.payment-methods {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.method-box {
+    width: 60px; 
+    height: 40px; 
+    background-color: #E0E0E0;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, border 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.method-box.selected {
+    background-color: #D1D1D1;
+    border-color: var(--nav-color); 
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #555;
+}
+
+.form-group input[type="text"] {
+    width: calc(100% - 20px); 
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    outline: none;
+    transition: border-color 0.2s ease;
+}
+
+.form-group input[type="text"]:focus {
+    border-color: var(--nav-color);
+}
+
+.input-row {
+    display: flex;
+    gap: 15px;
+}
+
+.input-row .cvc-group {
+    flex: 0 0 80px; 
+    display: flex;
+    flex-direction: column;
+}
+
+.input-row .cvc-group input {
+    width: 100%; 
+}
+
+
+.input-row .field-half {
+    flex: 1; 
+}
+
+.purchase-button {
+    background-color: var(--purple-button);
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    border-radius: var(--corner-radius-size);
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 18px;
+    margin-top: 20px;
+    transition: background-color 0.3s ease;
+    align-self: flex-end; 
+}
+
+.purchase-button:hover {
+    opacity: 0.9;
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        padding: 15px 20px;
+        align-items: flex-start;
+    }
+
+    .navbar .logo {
+        margin-bottom: 10px;
+    }
+
+    .navbar nav {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .navbar nav ul {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .navbar nav ul li {
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+
+    .profile-button {
+        position: absolute; 
+        top: 15px;
+        right: 20px;
+    }
+
+    .content-area {
+        padding: 20px;
+    }
+
+    .subscription-card {
+        flex-direction: column; 
+    }
+
+    .subscription-summary {
+        border-right: none; 
+        border-bottom: 1px solid #eee; 
+        padding: 20px; 
+    }
+
+    .payment-form {
+        padding: 20px; 
+    }
+
+    .input-row {
+        flex-direction: column; 
+        gap: 0; 
+    }
+
+    .input-row .cvc-group {
+        flex: none; 
+        width: 100%; 
+        margin-top: 15px; 
+    }
+
+    .input-row .field-half {
+        width: 100%; 
+    }
+
+    .form-group label {
+        margin-top: 15px;
+    }
+
+    .purchase-button {
+        width: 100%; 
+        align-self: center; 
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+    .navbar {
+        padding: 15px 30px;
+    }
+
+    .content-area {
+        padding: 30px;
+    }
+
+    .subscription-card {
+        flex-direction: column; 
+    }
+
+    .subscription-summary {
+        border-right: none;
+        border-bottom: 1px solid #eee;
+    }
+
+    .payment-form {
+        padding: 25px;
+    }
+
+    .input-row {
+        flex-wrap: wrap; 
+    }
+    
+    .input-row .field-half {
+        flex-basis: calc(50% - 10px); 
+    }
+
+    .input-row .cvc-group {
+        flex-basis: 100px; 
+    }
+}
