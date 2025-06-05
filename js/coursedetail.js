@@ -288,143 +288,143 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    if (courseNameParam) {
-        const decodedCourseName = decodeURIComponent(courseNameParam);
-        const courseData = coursesData[decodedCourseName];
+  if (courseNameParam) {
+    const decodedCourseName = decodeURIComponent(courseNameParam);
+    const courseData = coursesData[decodedCourseName];
 
-        if (courseData) {
-            courseDetailPageTitle.textContent = `${decodedCourseName} - Course Detail - BeeYond`;
+    if (courseData) {
+      courseDetailPageTitle.textContent = `${decodedCourseName} - Course Detail - BeeYond`;
 
-            detailCourseTitle.textContent = decodedCourseName;
-            detailCourseCode.textContent = courseData.code;
+      detailCourseTitle.textContent = decodedCourseName;
+      detailCourseCode.textContent = courseData.code;
 
-            detailCourseRating.innerHTML = '';
-            const fullStars = Math.floor(courseData.rating);
-            const hasHalfStar = courseData.rating % 1 !== 0;
+      detailCourseRating.innerHTML = '';
+      const fullStars = Math.floor(courseData.rating);
+      const hasHalfStar = courseData.rating % 1 !== 0;
 
-            for (let i = 0; i < fullStars; i++) {
-                const star = document.createElement('span');
-                star.textContent = '⭐';
-                detailCourseRating.appendChild(star);
-            }
-            if (hasHalfStar) {
-                const halfStar = document.createElement('span');
-                halfStar.textContent = '⭐️';
-                detailCourseRating.appendChild(halfStar);
-            }
-            detailCourseReviews.textContent = `(${courseData.reviews} Review)`;
+      for (let i = 0; i < fullStars; i++) {
+        const star = document.createElement('span');
+        star.textContent = '⭐';
+        detailCourseRating.appendChild(star);
+      }
+      if (hasHalfStar) {
+        const halfStar = document.createElement('span');
+        halfStar.textContent = '⭐️';
+        detailCourseRating.appendChild(halfStar);
+      }
+      detailCourseReviews.textContent = `(${courseData.reviews} Review)`;
 
-            detailLearningOutcomes.innerHTML = '';
-            courseData.learningOutcomes.forEach((outcome, index) => {
-                const div = document.createElement('div');
-                div.classList.add('lo-item');
-                div.textContent = `LO ${index + 1}: ${outcome}`;
-                detailLearningOutcomes.appendChild(div);
-            });
+      detailLearningOutcomes.innerHTML = '';
+      courseData.learningOutcomes.forEach((outcome, index) => {
+        const div = document.createElement('div');
+        div.classList.add('lo-item');
+        div.textContent = `LO ${index + 1}: ${outcome}`;
+        detailLearningOutcomes.appendChild(div);
+      });
 
-            detailAboutText.textContent = courseData.aboutText;
+      detailAboutText.textContent = courseData.aboutText;
 
-            detailRoadmapSections.innerHTML = '';
-            courseData.roadmap.forEach(stageData => {
-                const stageDiv = document.createElement('div');
-                stageDiv.classList.add('roadmap-stage');
+      detailRoadmapSections.innerHTML = '';
+      courseData.roadmap.forEach(stageData => {
+        const stageDiv = document.createElement('div');
+        stageDiv.classList.add('roadmap-stage');
 
-                const stageTitle = document.createElement('h3');
-                stageTitle.textContent = stageData.stage;
-                stageDiv.appendChild(stageTitle);
+        const stageTitle = document.createElement('h3');
+        stageTitle.textContent = stageData.stage;
+        stageDiv.appendChild(stageTitle);
 
-                const topicsGrid = document.createElement('div');
-                topicsGrid.classList.add('roadmap-topics-grid');
+        const topicsGrid = document.createElement('div');
+        topicsGrid.classList.add('roadmap-topics-grid');
 
-                stageData.topics.forEach(topic => {
-                    const topicButton = document.createElement('button');
-                    topicButton.type = "button";
-                    topicButton.classList.add('roadmap-topic-btn');
-                    topicButton.textContent = topic;
-                    topicsGrid.appendChild(topicButton);
-                });
-                stageDiv.appendChild(topicsGrid);
-                detailRoadmapSections.appendChild(stageDiv);
-            });
+        stageData.topics.forEach(topic => {
+          const topicButton = document.createElement('button');
+          topicButton.type = "button";
+          topicButton.classList.add('roadmap-topic-btn');
+          topicButton.textContent = topic;
+          topicsGrid.appendChild(topicButton);
+        });
+        stageDiv.appendChild(topicsGrid);
+        detailRoadmapSections.appendChild(stageDiv);
+      });
 
-            const radius = progressCircle.r.baseVal.value;
-            const circumference = 2 * Math.PI * radius;
-            const progressPercentage = courseData.progress || 0;
-            const offset = circumference - (progressPercentage / 100) * circumference;
+      const radius = progressCircle.r.baseVal.value;
+      const circumference = 2 * Math.PI * radius;
+      const progressPercentage = courseData.progress || 0;
+      const offset = circumference - (progressPercentage / 100) * circumference;
 
-            progressCircle.style.strokeDasharray = `${circumference} ${circumference}`;
-            progressCircle.style.strokeDashoffset = offset;
-            progressText.textContent = `${progressPercentage}%`;
+      progressCircle.style.strokeDasharray = `${circumference} ${circumference}`;
+      progressCircle.style.strokeDashoffset = offset;
+      progressText.textContent = `${progressPercentage}%`;
 
-        } else {
-            courseDetailPageTitle.textContent = "Course Not Found - BeeYond";
-            detailCourseTitle.textContent = "Kursus Tidak Ditemukan";
-            detailCourseCode.textContent = "";
-            detailCourseRating.innerHTML = "";
-            detailCourseReviews.textContent = "";
-            detailLearningOutcomes.innerHTML = '<div class="lo-item">Detail untuk kursus ini tidak ditemukan.</div>';
-            detailAboutText.textContent = "Silakan pilih kursus yang valid dari halaman utama.";
-            detailRoadmapSections.innerHTML = '';
-            progressText.textContent = '0%';
-            progressCircle.style.strokeDashoffset = circumference;
-        }
-    } else {
-        courseDetailPageTitle.textContent = "Course Not Found - BeeYond";
-        detailCourseTitle.textContent = "Kursus Tidak Ditemukan";
-        detailCourseCode.textContent = "";
-        detailCourseRating.innerHTML = "";
-        detailCourseReviews.textContent = "";
-        detailLearningOutcomes.innerHTML = '<div class="lo-item">Silakan pilih kursus dari halaman utama.</div>';
-        detailAboutText.textContent = "Tidak ada kursus yang dipilih. Silakan kembali ke halaman kursus untuk memilih.";
-        detailRoadmapSections.innerHTML = '';
-        progressText.textContent = '0%';
-        progressCircle.style.strokeDashoffset = circumference;
-    }
+    } else {
+      courseDetailPageTitle.textContent = "Course Not Found - BeeYond";
+      detailCourseTitle.textContent = "Kursus Tidak Ditemukan";
+      detailCourseCode.textContent = "";
+      detailCourseRating.innerHTML = "";
+      detailCourseReviews.textContent = "";
+      detailLearningOutcomes.innerHTML = '<div class="lo-item">Detail untuk kursus ini tidak ditemukan.</div>';
+      detailAboutText.textContent = "Silakan pilih kursus yang valid dari halaman utama.";
+      detailRoadmapSections.innerHTML = '';
+      progressText.textContent = '0%';
+      progressCircle.style.strokeDashoffset = circumference;
+    }
+  } else {
+    courseDetailPageTitle.textContent = "Course Not Found - BeeYond";
+    detailCourseTitle.textContent = "Kursus Tidak Ditemukan";
+    detailCourseCode.textContent = "";
+    detailCourseRating.innerHTML = "";
+    detailCourseReviews.textContent = "";
+    detailLearningOutcomes.innerHTML = '<div class="lo-item">Silakan pilih kursus dari halaman utama.</div>';
+    detailAboutText.textContent = "Tidak ada kursus yang dipilih. Silakan kembali ke halaman kursus untuk memilih.";
+    detailRoadmapSections.innerHTML = '';
+    progressText.textContent = '0%';
+    progressCircle.style.strokeDashoffset = circumference;
+  }
 
-    const loginButton = document.getElementById('loginButton');
-    const userProfile = document.getElementById('userProfile');
-    const profileDropdown = document.getElementById('profileDropdown');
+  const loginButton = document.getElementById('loginButton');
+  const userProfile = document.getElementById('userProfile');
+  const profileDropdown = document.getElementById('profileDropdown');
 
-    const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+  const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
 
-    if (isLoggedIn) {
-        if (loginButton) loginButton.style.display = 'none';
-        if (userProfile) userProfile.style.display = 'flex';
-    } else {
-        if (loginButton) loginButton.style.display = 'block';
-        if (userProfile) userProfile.style.display = 'none';
-    }
+  if (isLoggedIn) {
+    if (loginButton) loginButton.style.display = 'none';
+    if (userProfile) userProfile.style.display = 'flex';
+  } else {
+    if (loginButton) loginButton.style.display = 'block';
+    if (userProfile) userProfile.style.display = 'none';
+  }
 
-    if (userProfile) {
-        userProfile.addEventListener('click', () => {
-            if (profileDropdown) {
-                profileDropdown.style.display = profileDropdown.style.display === 'block' ? 'none' : 'block';
-            }
-        });
-    }
+  if (userProfile) {
+    userProfile.addEventListener('click', () => {
+      if (profileDropdown) {
+        profileDropdown.style.display = profileDropdown.style.display === 'block' ? 'none' : 'block';
+      }
+    });
+  }
 
-    window.addEventListener('click', (event) => {
-        if (userProfile && !userProfile.contains(event.target) && profileDropdown) {
-            profileDropdown.style.display = 'none';
-        }
-    });
+  window.addEventListener('click', (event) => {
+    if (userProfile && !userProfile.contains(event.target) && profileDropdown) {
+      profileDropdown.style.display = 'none';
+    }
+  });
 
-    const logoutButton = document.getElementById('logoutButton');
-    if (logoutButton) {
-        logoutButton.addEventListener('click', (e) => {
-            e.preventDefault();
-            localStorage.removeItem('isLoggedIn');
-            window.location.href = '../html/login.html';
-        });
-    }
+  const logoutButton = document.getElementById('logoutButton');
+  if (logoutButton) {
+    logoutButton.addEventListener('click', (e) => {
+      e.preventDefault();
+      localStorage.removeItem('isLoggedIn');
+      window.location.href = '../html/login.html';
+    });
+  }
 
-    const burger = document.querySelector('.burger');
-    const navMenu = document.querySelector('.nav-menu');
+  const burger = document.querySelector('.burger');
+  const navMenu = document.querySelector('.nav-menu');
 
-    if (burger) {
-        burger.addEventListener('click', () => {
-            navMenu.classList.toggle('nav-active');
-            burger.classList.toggle('toggle');
-        });
-    }
+  if (burger) {
+    burger.addEventListener('click', () => {
+      navMenu.classList.toggle('nav-active');
+      burger.classList.toggle('toggle');
+    });
+  }
 });
