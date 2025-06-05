@@ -111,7 +111,6 @@
     background-color: var(--nav-color);
     color: white;
     padding: 2rem 0;
-    margin-top: 4rem;
 }
 
 .footer-content {
@@ -121,6 +120,10 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+.footer-content a{
+    text-decoration: none;
 }
 
 .footer-brand h3 {

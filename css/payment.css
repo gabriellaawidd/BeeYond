@@ -116,7 +116,7 @@ body {
     margin-bottom: 20px;
 }
 
-.subscription-summary .price-details {
+.subscription-summary .price-details span{
     display: flex;
     align-items: baseline;
     font-size: 36px;
@@ -164,9 +164,20 @@ body {
     gap: 10px;
     margin-bottom: 20px;
 }
-
+.payment-methods img {
+    width: 40px; 
+    height: 40px; 
+    cursor: pointer;
+    transition: transform 0.3s ease, border 0.3s ease;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+.payment-methods img:hover {
+    transform: scale(1.05);
+}
 .method-box {
-    width: 60px; 
+    width: 100px; 
     height: 40px; 
     background-color: #E0E0E0;
     border-radius: 8px;
@@ -184,6 +195,11 @@ body {
     margin-bottom: 15px;
 }
 
+.required {
+    color: red;
+    font-size: 14px;
+}
+
 .form-group label {
     display: block;
     margin-bottom: 8px;
@@ -199,6 +215,7 @@ body {
     font-size: 16px;
     outline: none;
     transition: border-color 0.2s ease;
+    color: black;
 }
 
 .form-group input[type="text"]:focus {
@@ -244,31 +261,6 @@ body {
 }
 
 @media (max-width: 768px) {
-    .navbar {
-        flex-direction: column;
-        padding: 15px 20px;
-        align-items: flex-start;
-    }
-
-    .navbar .logo {
-        margin-bottom: 10px;
-    }
-
-    .navbar nav {
-        width: 100%;
-        margin-bottom: 10px;
-    }
-
-    .navbar nav ul {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    .navbar nav ul li {
-        margin-right: 0;
-        margin-bottom: 10px;
-    }
-
     .profile-button {
         position: absolute; 
         top: 15px;
@@ -319,10 +311,6 @@ body {
 }
 
 @media (min-width: 769px) and (max-width: 1024px) {
-    .navbar {
-        padding: 15px 30px;
-    }
-
     .content-area {
         padding: 30px;
     }
