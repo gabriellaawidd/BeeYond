@@ -318,7 +318,7 @@ document.addEventListener('DOMContentLoaded', () => {
       courseData.learningOutcomes.forEach((outcome, index) => {
         const div = document.createElement('div');
         div.classList.add('lo-item');
-        div.textContent = `LO ${index + 1}: ${outcome}`;
+        div.textContent = `${outcome}`;
         detailLearningOutcomes.appendChild(div);
       });
 
