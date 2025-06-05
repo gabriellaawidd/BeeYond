@@ -1,8 +1,10 @@
+const urlParams = new URLSearchParams(window.location.search);
+const course = urlParams.get('course');
 document.addEventListener('DOMContentLoaded', () => {
     const backButton = document.querySelector('.back-button');
     if (backButton) {
         backButton.addEventListener('click', () => {
-            window.location.href = 'coursedetail.html';
+            window.location.href = `coursedetail.html?course=${course}`;
             alertMessage('You are being redirected to the course details page!', 'info');
         });
     }
@@ -15,6 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const chapterTitle = chapterCard.querySelector('.chapter-title').innerText;
             console.log(`Navigating to course for ${chapterNumber}: ${chapterTitle}`);
             alertMessage(`Redirecting you to the ${chapterTitle} material...`, 'success');
+            window.location.href = `coursedetail.html?course=${course}`;
         });
     });
 
@@ -24,8 +27,10 @@ document.addEventListener('DOMContentLoaded', () => {
             const chapterCard = event.target.closest('.chapter-card');
             const chapterNumber = chapterCard.querySelector('.chapter-number').innerText;
             const chapterTitle = chapterCard.querySelector('.chapter-title').innerText;
-            window.location.href = 'exercise.html';
             alertMessage(`Loading exercises for ${chapterTitle}...`, 'success');
+            if (course) {
+                window.location.href = `question.html?course=${course}&chapter=${chapterNumber}`;
+            }
         });
     });
 

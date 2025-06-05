@@ -10,7 +10,10 @@
     --shadow-light: rgba(0, 0, 0, 0.1);
     --border-radius: 8px;
 }
-
+a {
+    text-decoration: none;
+    color: inherit;
+}
 body {
     font-family: 'Inter', sans-serif;
     margin: 0;

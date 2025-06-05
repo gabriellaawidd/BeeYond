@@ -292,6 +292,18 @@ document.addEventListener('DOMContentLoaded', () => {
     const decodedCourseName = decodeURIComponent(courseNameParam);
     const courseData = coursesData[decodedCourseName];
     const reviewLink = document.querySelector('.review-link');
+    const booksLink = document.querySelector('.books-link');
+    const exerciseLink = document.querySelector('.exercise-link');
+    const videosLink = document.querySelector('.videos-link');
+    if (booksLink) {
+        booksLink.href = `books.html?course=${encodeURIComponent(courseNameParam)}`;
+    }
+    if (exerciseLink) {
+        exerciseLink.href = `exercise.html?course=${encodeURIComponent(courseNameParam)}`;
+    }
+    if (videosLink) {
+        videosLink.href = `videos.html?course=${encodeURIComponent(courseNameParam)}`;
+    }
     if (reviewLink) {
         reviewLink.href = `review.html?course=${encodeURIComponent(courseNameParam)}`;
     }
