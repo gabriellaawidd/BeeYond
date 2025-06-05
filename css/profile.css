@@ -34,6 +34,7 @@ body {
 }
 
 .hero-banner {
+    padding-top: 48px;
     position: relative;
     width: 100%;
     max-width: 100%;
@@ -119,12 +120,34 @@ body {
 }
 
 .courses-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    display: flex;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
     gap: 2rem;
+    padding-bottom: 1rem;
+    scrollbar-width: thin;
+    scrollbar-color: var(--nav-color) rgba(0,0,0,0.1);
+}
+
+.courses-grid::-webkit-scrollbar {
+    height: 8px;
+}
+
+.courses-grid::-webkit-scrollbar-track {
+    background: rgba(0,0,0,0.1);
+    border-radius: 10px;
+}
+
+.courses-grid::-webkit-scrollbar-thumb {
+    background-color: var(--nav-color);
+    border-radius: 10px;
+    border: 2px solid transparent;
+    background-clip: padding-box;
 }
 
 .course-card {
+    flex-shrink: 0;
+    width: 280px;
     background-color: var(--primary);
     border-radius: var(--corner-radius-size);
     overflow: hidden;
@@ -298,9 +321,18 @@ body {
     }
 
     .courses-grid {
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        padding: 0;
+        display: flex;
+        overflow-x: auto;
         gap: 1.5rem;
+        padding: 0 1rem 1rem 1rem;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: thin;
+        scrollbar-color: var(--nav-color) rgba(0,0,0,0.1);
+    }
+
+    .course-card {
+        flex-shrink: 0;
+        width: 250px;
     }
 }
 
@@ -338,9 +370,13 @@ body {
     }
 
     .courses-grid {
-        grid-template-columns: 1fr;
-        padding: 0;
-        gap: 1.5rem;
+        padding: 0 0.8rem 0.8rem 0.8rem;
+        gap: 1rem;
+    }
+
+    .course-card {
+        width: 220px;
+        min-height: 180px;
     }
 }
 
