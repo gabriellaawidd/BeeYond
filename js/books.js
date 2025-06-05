@@ -4,6 +4,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const pdfIframe = document.getElementById('pdfViewerIframe');
     const pdfDownloadLink = document.getElementById('pdfDownloadLink');
     const chapterTextBlock = document.getElementById('chapterTextBlock'); 
+    const backToCourseButton = document.querySelector('.back-to-course-button');
+    const urlSearchParams = new URLSearchParams(window.location.search);
+    const course = urlSearchParams.get('course');
+
+    backToCourseButton.addEventListener('click', () => {
+        window.location.href = `coursedetail.html?course=${course}`;
+    });
 
     const loadPdf = (pdfSrc) => {
         if (pdfSrc) {

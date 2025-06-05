@@ -25,6 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const updateAuthButtons = () => {
         const isLoggedIn = sessionStorage.getItem('isLoggedIn') === 'true';
+        sessionStorage.setItem('userProfilePic', '/assets/profileDefault.png');
         const userProfilePic = sessionStorage.getItem('userProfilePic');
 
         if (isLoggedIn) {
@@ -32,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (userProfileDiv) {
                 userProfileDiv.style.display = 'flex';
                 if (profileImg) {
-                    profileImg.src = userProfilePic || 'https://via.placeholder.com/32/758BFD/FFFFFF?text=👤';
+                    profileImg.src = userProfilePic || '/assets/profileDefault.png';
                     profileImg.alt = 'User Profile';
                 }
             }

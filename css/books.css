@@ -206,33 +206,6 @@ body {
 }
 
 @media (max-width: 768px) {
-    .header {
-        flex-direction: column;
-        padding: 15px 20px;
-        align-items: flex-start;
-    }
-
-    .header .logo {
-        margin-bottom: 10px;
-    }
-
-    .header .nav-menu {
-        width: 100%;
-        margin-bottom: 10px;
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    .header .nav-menu .nav-link {
-        margin-right: 0;
-        margin-bottom: 10px;
-    }
-
-    .auth-buttons .login-btn {
-        width: 100%;
-        margin-top: 10px;
-    }
-
     .content-wrapper {
         flex-direction: column;
         padding: 20px;
@@ -259,10 +232,6 @@ body {
 }
 
 @media (min-width: 769px) and (max-width: 1024px) {
-    .header {
-        padding: 15px 30px;
-    }
-
     .content-wrapper {
         padding: 20px 30px;
         flex-direction: column;
