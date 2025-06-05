@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BeeYond</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/course.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+<header class="header">
+    <div class="nav-container">
+        <div class="logo">
+            <h1>BeeYond</h1>
+        </div>
+        <nav class="nav-menu">
+            <a href="../html/home.html" class="nav-link">Home</a>
+            <a href="../html/course.html" class="nav-link active">Courses</a>
+            <a href="../html/subscription.html" class="nav-link">Subscription</a>
+            <a href="../html/about.html" class="nav-link">About Us</a>
+        </nav>
+        <div class="auth-buttons">
+            <button type="button" class="login-btn" id="loginButton">Login</button>
+            <div class="user-profile" id="userProfile" style="display: none;">
+                <img src="https://via.placeholder.com/32/758BFD/FFFFFF?text=👤" alt="User Profile" class="profile-img">
+                <div class="profile-dropdown" id="profileDropdown">
+                    <a href="../html/profile.html">My Profile</a>
+                    <a href="../html/login.html" id="logoutButton">Logout</a>
+                </div>
+            </div>
+        </div>
+        <div class="burger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+</header>
+    <main>
+        <section class="category">
+            <h2>Computer Science</h2>
+            <div class="course-grid">
+                <div class="course-card" data-course-name="Algorithm and Programming">
+                    <h3>Algorithm and Programming</h3>
+                    <p>1st Semester</p>
+                    <button type="button" class="view-details-btn">View Details</button>
+                </div>
+                <div class="course-card" data-course-name="Data Structures">
+                    <h3>Data Structures</h3>
+                    <p>2nd Semester</p>
+                    <button type="button" class="view-details-btn">View Details</button>
+                </div>
+                <div class="course-card" data-course-name="Operating Systems">
+                    <h3>Operating Systems</h3>
+                    <p>4th Semester</p>
+                    <button type="button" class="view-details-btn">View Details</button>
+                </div>
+                <div class="course-card" data-course-name="Database Management">
+                    <h3>Database Management</h3>
+                    <p>3rd Semester</p>
+                    <button type="button" class="view-details-btn">View Details</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="category">
+            <h2>Psychology</h2>
+            <div class="course-grid">
+                <div class="course-card" data-course-name="Introduction to Psychology">
+                    <h3>Introduction to Psychology</h3>
+                    <p>1st Semester</p>
+                    <button type="button" class="view-details-btn">View Details</button>
+                </div>
+                <div class="course-card" data-course-name="Developmental Psychology">
+                    <h3>Developmental Psychology</h3>
+                    <p>2nd Semester</p>
+                    <button type="button" class="view-details-btn">View Details</button>
+                </div>
+                <div class="course-card" data-course-name="Social Psychology">
+                    <h3>Social Psychology</h3>
+                    <p>2nd Semester</p>
+                    <button type="button" class="view-details-btn">View Details</button>
+                </div>
+                <div class="course-card" data-course-name="Cognitive Psychology">
+                    <h3>Cognitive Psychology</h3>
+                    <p>3rd Semester</p>
+                    <button type="button" class="view-details-btn">View Details</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="category">
+            <h2>Accounting</h2>
+            <div class="course-grid">
+                <div class="course-card" data-course-name="Financial Accounting I">
+                    <h3>Financial Accounting I</h3>
+                    <p>1st Semester</p>
+                    <button type="button" class="view-details-btn">View Details</button>
+                </div>
+                <div class="course-card" data-course-name="Managerial Accounting">
+                    <h3>Managerial Accounting</h3>
+                    <p>2nd Semester</p>
+                    <button type="button" class="view-details-btn">View Details</button>
+                </div>
+                <div class="course-card" data-course-name="Auditing Principles">
+                    <h3>Auditing Principles</h3>
+                    <p>2nd Semester</p>
+                    <button type="button" class="view-details-btn">View Details</button>
+                </div>
+                <div class="course-card" data-course-name="Taxation Fundamentals">
+                    <h3>Taxation Fundamentals</h3>
+                    <p>2nd Semester</p>
+                    <button type="button" class="view-details-btn">View Details</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="category">
+            <h2>Business Information Technology</h2>
+            <div class="course-grid">
+                <div class="course-card" data-course-name="Introduction to BIT">
+                    <h3>Introduction to BIT</h3>
+                    <p>1st Semester</p>
+                    <button type="button" class="view-details-btn">View Details</button>
+                </div>
+                <div class="course-card" data-course-name="Systems Analysis and Design">
+                    <h3>Systems Analysis and Design</h3>
+                    <p>2nd Semester</p>
+                    <button type="button" class="view-details-btn">View Details</button>
+                </div>
+                <div class="course-card" data-course-name="Business Intelligence">
+                    <h3>Business Intelligence</h3>
+                    <p>3rd Semester</p>
+                    <button type="button" class="view-details-btn">View Details</button>
+                </div>
+                <div class="course-card" data-course-name="E-commerce Strategies">
+                    <h3>E-commerce Strategies</h3>
+                    <p>5th Semester</p>
+                    <button type="button" class="view-details-btn">View Details</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h3>BeeYond</h3>
+                <p>©2025 BeeYond. All rights reserved.</p>
+            </div>
+            <div class="footer-links">
+                <span>Contact us</span>
+                <div class="social-link">
+                    <ul>
+                        <li><a href="https://instagram.com"><img src="../assets/lets-icons--insta.svg" alt="Instagram"></a></li>
+                        <li><a href="mailto:support@beeyond.com"><img src="../assets/material-symbols--mail-outline.svg" alt="Email"></a></li>
+                        <li><a href="tel:+628232894792"><img src="../assets/mdi--telephone.svg" alt="Telephone"></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <div id="notification-container"></div>
+    <script src="../js/common.js"></script>
+    <script src="../js/course.js"></script>
+</body>
+</html>
