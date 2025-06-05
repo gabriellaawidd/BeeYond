@@ -14,8 +14,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const progressText = document.getElementById('progressText');
 
     const coursesData = {
-        "Algorithm and Programming": {
-            code: "CS101",
+        "Calculus": {
+            code: "MATH101",
             rating: 4.5,
             reviews: 231,
             learningOutcomes: [
