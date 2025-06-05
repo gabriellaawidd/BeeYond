@@ -302,7 +302,7 @@ document.addEventListener('DOMContentLoaded', () => {
         exerciseLink.href = `exercise.html?course=${encodeURIComponent(courseNameParam)}`;
     }
     if (videosLink) {
-        videosLink.href = `videos.html?course=${encodeURIComponent(courseNameParam)}`;
+        videosLink.href = `videopage.html?course=${encodeURIComponent(courseNameParam)}`;
     }
     if (reviewLink) {
         reviewLink.href = `review.html?course=${encodeURIComponent(courseNameParam)}`;

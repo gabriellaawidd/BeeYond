@@ -9,6 +9,13 @@
     --white: #ffffff;
     --shadow-light: rgba(0, 0, 0, 0.1);
     --border-radius: 8px;
+    --button: #FF8600;
+    --primary: #27187E;
+    --background: #F1F2F6;
+    --nav-color: #758BFD;
+    --border-weight-size: 3px;
+    --corner-radius-size: 12px;
+    --highlight-text-color: var(--nav-color); 
 }
 a {
     text-decoration: none;
@@ -182,7 +189,7 @@ body {
     border-radius: var(--border-radius);
     cursor: pointer;
     font-weight: 600;
-    transition: background-color 0.3s ease, transform 0.2s ease;
+    transition: background-color 0.3s ease, transform 0.2s ease, color 0.3s ease;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -194,12 +201,12 @@ body {
 }
 
 .goto-course-button:hover {
-    background-color: darken(var(--primary-purple), 10%);
+    background-color: var(--nav-color);
     transform: translateY(-2px);
 }
 
 .goto-exercise-button:hover {
-    background-color: darken(var(--secondary-orange), 10%);
+    background-color: var(--nav-color);
     transform: translateY(-2px);
 }
 
