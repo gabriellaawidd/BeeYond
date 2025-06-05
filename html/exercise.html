@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BeeYond</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/exercise.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+<header class="header">
+    <div class="nav-container">
+        <div class="logo">
+            <h1>BeeYond</h1>
+        </div>
+        <nav class="nav-menu">
+            <a href="../html/home.html" class="nav-link">Home</a>
+            <a href="../html/course.html" class="nav-link">Courses</a>
+            <a href="../html/subscription.html" class="nav-link">Subscription</a>
+            <a href="../html/about.html" class="nav-link">About Us</a>
+        </nav>
+        <div class="auth-buttons">
+            <button type="button" class="login-btn" id="loginButton">Login</button>
+            <div class="user-profile" id="userProfile">
+                <img src="https://via.placeholder.com/32/758BFD/FFFFFF?text=👤" alt="User Profile" class="profile-img">
+                <div class="profile-dropdown" id="profileDropdown">
+                    <a href="../html/profile.html">My Profile</a>
+                    <a href="../html/login.html" id="logoutButton">Logout</a>
+                </div>
+            </div>
+        </div>
+        <div class="burger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+</header>
+    <div class="container">
+        <aside class="sidebar">
+            <button type="button" class="back-button"><i class="fas fa-arrow-left"></i> Back to course</button>
+            <div class="exercise-header">
+                <h1>Exercises</h1>
+                <h2>Stage 1</h2>
+            </div>
+            <div class="total-score-card">
+                <h3>Total Score</h3>
+                <div class="score-bar">
+                    <div class="score-fill"></div>
+                </div>
+                <p class="score-percentage">85%</p>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <h1 class="page-title">Learning Materials</h1>
+
+            <div class="chapter-card">
+                <div class="chapter-info">
+                    <h2 class="chapter-number">Chapter 1</h2>
+                    <h3 class="chapter-title">Limits and Continuity</h3>
+                    <p class="material-details">Material: Limits and Continuity</p>
+                    <p class="question-details">Questions: 20</p>
+                    <p class="score-details">Score: 100</p>
+                </div>
+                <div class="chapter-actions">
+                    <button type="button" class="goto-course-button">Go to course</button>
+                    <button type="button" class="goto-exercise-button">Go to exercise <i class="fas fa-arrow-right"></i></button>
+                </div>
+            </div>
+
+            <div class="chapter-card">
+                <div class="chapter-info">
+                    <h2 class="chapter-number">Chapter 2</h2>
+                    <h3 class="chapter-title">Derivatives and Differentiation Rules</h3>
+                    <p class="material-details">Material: Advanced Derivative</p>
+                    <p class="question-details">Questions: 20</p>
+                    <p class="score-details">Score: 100</p>
+                </div>
+                <div class="chapter-actions">
+                    <button type="button" class="goto-course-button">Go to course</button>
+                    <button type="button" class="goto-exercise-button">Go to exercise <i class="fas fa-arrow-right"></i></button>
+                </div>
+            </div>
+
+            <div class="chapter-card">
+                <div class="chapter-info">
+                    <h2 class="chapter-number">Chapter 3</h2>
+                    <h3 class="chapter-title">Applications of Differentiation</h3>
+                    <p class="material-details">Material: Applications of Differentiation</p>
+                    <p class="question-details">Questions: 20</p>
+                    <p class="score-details">Score: 100</p>
+                </div>
+                <div class="chapter-actions">
+                    <button type="button" class="goto-course-button">Go to course</button>
+                    <button type="button" class="goto-exercise-button">Go to exercise <i class="fas fa-arrow-right"></i></button>
+                </div>
+            </div>
+
+            <div class="chapter-card">
+                <div class="chapter-info">
+                    <h2 class="chapter-number">Chapter 4</h2>
+                    <h3 class="chapter-title">Integrals and Their Applications</h3>
+                    <p class="material-details">Material: Integral</p>
+                    <p class="question-details">Questions: 20</p>
+                    <p class="score-details">Score: 100</p>
+                </div>
+                <div class="chapter-actions">
+                    <button type="button" class="goto-course-button">Go to course</button>
+                    <button type="button" class="goto-exercise-button">Go to exercise <i class="fas fa-arrow-right"></i></button>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h3>BeeYond</h3>
+                <p>©2025 BeeYond. All rights reserved.</p>
+            </div>
+            <div class="footer-links">
+                <span>Contact us</span>
+                <div class="social-link">
+                    <ul>
+                        <li><a href="https://instagram.com"><img src="../assets/lets-icons--insta.svg" alt="Instagram"></a></li>
+                        <li><a href="mailto:support@beeyond.com"><img src="../assets/material-symbols--mail-outline.svg" alt="Email"></a></li>
+                        <li><a href="tel:+628232894792"><img src="../assets/mdi--telephone.svg" alt="Telephone"></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/common.js"></script>
+    <script src="../js/exercise.js"></script>
+</body>
+</html>
