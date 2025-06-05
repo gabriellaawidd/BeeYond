@@ -60,7 +60,7 @@ body {
     font-size: 1.1rem;
     font-weight: 600;
     cursor: pointer;
-    transition: all 0.2s ease;
+    transition: all 0.5s ease;
 }
 
 .cta-button:hover {
@@ -136,6 +136,16 @@ body {
     padding: 0;
 }
 
+.course-list a, .news-list a{
+    text-decoration: none;
+    color: inherit;
+    transition: color 0.3s ease;
+}
+
+.course-list a:hover, .news-list a:hover {
+    color: var(--highlight-text-color);
+}
+
 .course-list li,
 .news-list li {
     padding: 0.5rem 0;
@@ -160,12 +170,22 @@ body {
 }
 
 .featured-course-card {
+    display: flex;
+    flex-direction: column;
     background-color: var(--primary);
+    justify-content: space-between;
     color: white;
     padding: 1rem;
     border-radius: var(--corner-radius-size);
     font-size: 0.85rem;
     border: var(--border-weight-size) solid var(--nav-color);
+    height: 100%;
+    transition: all 0.5s ease;
+}
+
+.featured-course-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 12px rgba(39, 24, 126, 0.3);
 }
 
 .featured-course-card h4 {
@@ -220,6 +240,7 @@ body {
     border: var(--border-weight-size) solid var(--nav-color);
     transition: all 0.2s ease;
     animation: fadeInUp 0.6s ease-out;
+    cursor: pointer;
 }
 
 .course-card:hover {
