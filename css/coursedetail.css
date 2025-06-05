@@ -144,6 +144,10 @@ body {
     text-align: left;
 }
 
+.course-price a{
+    text-decoration: none;
+}
+
 .course-price h3 {
     color: var(--primary);
     font-size: 2.2em;
@@ -163,6 +167,7 @@ body {
     font-weight: 600;
     letter-spacing: 0.5px;
     box-shadow: 0 4px 15px rgba(117, 139, 253, 0.3);
+    transition: background-color 0.5 ease, transform 0.5s ease, box-shadow 0.5s ease;
 }
 
 .price-btn:hover {
