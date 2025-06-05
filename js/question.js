@@ -1,4 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const course = urlParams.get('course');
     const quizData = [
         {
             chapter: "Chapter 1",
@@ -43,7 +45,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const nextButton = document.getElementById('nextButton');
     const progressBarFill = document.getElementById('progressBarFill');
     const backToCourseDetailButton = document.getElementById('backToCourseDetail');
-
     function loadQuestion() {
         const questionData = quizData[currentQuestionIndex];
         chapterTitleElement.textContent = questionData.chapter;
@@ -155,7 +156,12 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
-
+    if (course) {
+        const backToCourseLink = document.querySelector('#backToCourseDetail');
+        if (backToCourseLink) {
+            backToCourseLink.href = `coursedetail.html?course=${course}`;
+        }
+    }
     nextButton.addEventListener('click', nextQuestion);
     prevButton.addEventListener('click', prevQuestion);
 
