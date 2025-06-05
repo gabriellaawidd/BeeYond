@@ -1,13 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Text:ital@0;1&display=swap');
 
 :root {
-    --button: #FF8600;
-    --primary: #27187E;
-    --background: #F1F2F6;
-    --nav-color: #758BFD;
-    --border-weight-size: 3px;
-    --corner-radius-size: 12px;
-    --highlight-text-color: var(--nav-color); /* Added for consistency of highlight color */
+    --button-color: #FF8600;
+    --primary-color: #27187E;
+    --background-color: #F1F2F6;
+    --nav-link-color: #758BFD;
+    --border-weight: 3px;
+    --corner-radius: 12px;
+    --highlight-text-color: var(--nav-link-color);
+    --chapter-default-bg: #E0E0E0;
+    --chapter-hover-bg: #D0D0D0;
+    --chapter-active-bg: #C3E6CB;
+    --text-color-dark: #333;
+    --text-color-medium: #444;
+    --text-color-light: #555;
 }
 
 * {
@@ -17,12 +23,16 @@
 }
 
 body {
-    font-family: 'Arial', sans-serif; /* Changed to single quotes for consistency */
-    background-color: var(--background);
-    color: #333; /* Default text color for general body content */
+    font-family: 'Arial', sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color-dark);
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+}
+
+#userProfile {
+    display: none;
 }
 
 .content-wrapper {
@@ -33,26 +43,25 @@ body {
 }
 
 .sidebar {
-    flex: 1; 
+    flex: 1;
     display: flex;
     flex-direction: column;
     gap: 20px;
 }
 
 .back-to-course-button {
-    background-color: var(--button);
+    background-color: var(--button-color);
     color: white;
     border: none;
     padding: 12px 25px;
-    border-radius: var(--corner-radius-size);
+    border-radius: var(--corner-radius);
     cursor: pointer;
     font-weight: bold;
     font-size: 16px;
     transition: background-color 0.3s ease;
-    text-align: center; 
-    display: block; 
+    text-align: center;
+    display: block;
     width: 100%;
-    box-sizing: border-box; 
 }
 
 .back-to-course-button:hover {
@@ -60,10 +69,10 @@ body {
 }
 
 .course-title-box {
-    background-color: var(--button);
+    background-color: var(--button-color);
     color: white;
     padding: 20px 25px;
-    border-radius: var(--corner-radius-size);
+    border-radius: var(--corner-radius);
 }
 
 .course-title-box h1 {
@@ -79,32 +88,32 @@ body {
 
 .chapter-navigation {
     background-color: white;
-    border-radius: var(--corner-radius-size);
+    border-radius: var(--corner-radius);
     padding: 15px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
 }
 
 .chapter-item {
-    background-color: #E0E0E0; 
+    background-color: var(--chapter-default-bg);
     padding: 15px 20px;
     margin-bottom: 10px;
-    border-radius: var(--corner-radius-size);
+    border-radius: var(--corner-radius);
     display: flex;
-    flex-wrap: wrap; 
+    flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
     font-weight: bold;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .chapter-item:hover {
-    background-color: #D0D0D0;
+    background-color: var(--chapter-hover-bg);
 }
 
 .chapter-item.active {
     background-color: var(--chapter-active-bg);
-    color: var(--primary);
+    color: var(--primary-color);
 }
 
 .chapter-item.active .arrow-icon {
@@ -114,52 +123,72 @@ body {
 .chapter-item .chapter-text {
     font-size: 20px;
     flex-basis: 100%;
-    margin-bottom: 5px; 
+    margin-bottom: 5px;
 }
 
 .chapter-item .chapter-subtext {
     font-size: 16px;
     font-weight: normal;
-    color: #555;
-    flex-basis: calc(100% - 30px); 
+    color: var(--text-color-light);
+    flex-basis: calc(100% - 30px);
 }
 
 .chapter-item .arrow-icon {
     font-size: 1.2em;
     transition: transform 0.3s ease;
-    flex-basis: 30px; 
+    flex-basis: 30px;
     text-align: right;
 }
 
-/* PDF Viewer Container */
 .pdf-viewer-container {
     background-color: white;
-    border: var(--border-weight-size) solid var(--nav-color);
-    border-radius: var(--corner-radius-size);
-    overflow: hidden; 
-    margin-top: 10px; 
-    margin-bottom: 10px; 
+    border: var(--border-weight) solid var(--nav-link-color);
+    border-radius: var(--corner-radius);
+    overflow: hidden;
+    margin-top: 10px;
+    margin-bottom: 10px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    display: none;
+}
+
+.pdf-viewer-container.active-pdf-viewer {
+    display: block;
 }
 
 .pdf-viewer-container iframe {
-    display: block; 
+    display: block;
     width: 100%;
-    height: 600px; 
+    height: 600px;
     border: none;
 }
 
+.pdf-viewer-container p {
+    padding: 15px;
+    text-align: center;
+    color: var(--text-color-dark);
+}
+
+.pdf-viewer-container p a {
+    color: var(--nav-link-color);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.pdf-viewer-container p a:hover {
+    text-decoration: underline;
+}
+
 .main-content {
-    flex: 3; 
+    flex: 3;
     background-color: white;
     padding: 30px;
-    border-radius: var(--corner-radius-size);
+    border-radius: var(--corner-radius);
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
 }
 
 .static-text-block {
     line-height: 1.6;
-    color: #444;
+    color: var(--text-color-medium);
 }
 
 .static-text-block p {
@@ -177,69 +206,66 @@ body {
 }
 
 @media (max-width: 768px) {
-    .navbar {
+    .header {
         flex-direction: column;
         padding: 15px 20px;
         align-items: flex-start;
     }
 
-    .navbar .logo {
+    .header .logo {
         margin-bottom: 10px;
     }
 
-    .navbar nav {
+    .header .nav-menu {
         width: 100%;
         margin-bottom: 10px;
-    }
-
-    .navbar nav ul {
         flex-direction: column;
         align-items: flex-start;
     }
 
-    .navbar nav ul li {
+    .header .nav-menu .nav-link {
         margin-right: 0;
         margin-bottom: 10px;
     }
 
-    .login-button {
+    .auth-buttons .login-btn {
         width: 100%;
         margin-top: 10px;
     }
 
     .content-wrapper {
-        flex-direction: column; 
+        flex-direction: column;
         padding: 20px;
     }
 
     .sidebar {
-        flex: auto; 
+        flex: auto;
     }
 
     .main-content {
-        flex: auto; 
-        order: -1; 
-        padding: 20px; 
+        flex: auto;
+        order: -1;
+        padding: 20px;
     }
 
     .pdf-viewer-container iframe {
-        height: 400px; 
+        height: 400px;
     }
 
     .chapter-item .chapter-text,
     .chapter-item .chapter-subtext {
-        flex-basis: calc(100% - 40px); 
+        flex-basis: calc(100% - 40px);
     }
 }
 
 @media (min-width: 769px) and (max-width: 1024px) {
-    .navbar {
+    .header {
         padding: 15px 30px;
     }
 
     .content-wrapper {
         padding: 20px 30px;
-        flex-direction: column; 
+        flex-direction: column;
     }
 
     .sidebar {
@@ -248,6 +274,6 @@ body {
 
     .main-content {
         flex: auto;
-        order: -1; 
+        order: -1;
     }
 }
