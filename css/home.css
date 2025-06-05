@@ -7,7 +7,7 @@
     --nav-color: #758BFD;
     --border-weight-size: 3px;
     --corner-radius-size: 12px;
-    --highlight-text-color: var(--nav-color); /* Added for consistency of highlight color */
+    --highlight-text-color: var(--nav-color); 
 }
 
 * {
@@ -17,9 +17,9 @@
 }
 
 body {
-    font-family: 'Arial', sans-serif; /* Changed to single quotes for consistency */
+    font-family: 'Arial', sans-serif; 
     background-color: var(--background);
-    color: #333; /* Default text color for general body content */
+    color: #333; 
     min-height: 100vh;
     display: flex;
     flex-direction: column;

@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Text:ital@0;1&display=swap');
+
 :root {
     --button: #FF8600;
     --primary: #27187E;
@@ -5,76 +7,22 @@
     --nav-color: #758BFD;
     --border-weight-size: 3px;
     --corner-radius-size: 12px;
+    --highlight-text-color: var(--nav-color); /* Added for consistency of highlight color */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
+    font-family: 'Arial', sans-serif; /* Changed to single quotes for consistency */
     background-color: var(--background);
-    color: #333;
+    color: #333; /* Default text color for general body content */
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
-}
-
-.navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: var(--primary);
-    color: white;
-    padding: 15px 40px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    flex-wrap: wrap; 
-}
-
-.navbar .logo {
-    font-size: 24px;
-    font-weight: bold;
-    margin-right: 20px; 
-}
-
-.navbar nav {
-    flex-grow: 1; 
-}
-
-.navbar nav ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: flex-start; 
-}
-
-.navbar nav ul li {
-    margin-right: 30px;
-}
-
-.navbar nav ul li a {
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-    transition: color 0.3s ease;
-}
-
-.navbar nav ul li a:hover {
-    color: var(--nav-color);
-}
-
-.login-button {
-    background-color: var(--button);
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: var(--corner-radius-size);
-    cursor: pointer;
-    font-weight: bold;
-    transition: background-color 0.3s ease;
-    white-space: nowrap; 
-}
-
-.login-button:hover {
-    opacity: 0.9;
 }
 
 .content-wrapper {

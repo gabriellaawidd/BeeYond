@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Text:ital@0;1&display=swap');
+
 :root {
     --button: #FF8600;
     --primary: #27187E;
@@ -5,8 +7,22 @@
     --nav-color: #758BFD;
     --border-weight-size: 3px;
     --corner-radius-size: 12px;
-    --card-background: #FFFFFF;
-    --purple-button: #8A2BE2; 
+    --highlight-text-color: var(--nav-color); /* Added for consistency of highlight color */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif; /* Changed to single quotes for consistency */
+    background-color: var(--background);
+    color: #333; /* Default text color for general body content */
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 .content-area {
