@@ -12,6 +12,15 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    const params = new URLSearchParams(window.location.search);
+    const course = params.get('course');
+
+    // Example: Change the header based on course
+    if (course) {
+        document.querySelector('.review-header h1').textContent = `${course.charAt(0).toUpperCase() + course.slice(1)} Review`;
+        // You can also load different reviews based on the course variable here
+    }
+
     const likeButtons = document.querySelectorAll('.like-btn');
     const dislikeButtons = document.querySelectorAll('.dislike-btn');
 
@@ -27,9 +36,7 @@ document.addEventListener('DOMContentLoaded', function() {
         button.addEventListener('click', function() {
             const span = this.querySelector('span');
             let count = parseInt(span.textContent);
-            if (count > 0) {
-                span.textContent = count - 1;
-            }
+            span.textContent = count + 1;
         });
     });
 });

@@ -120,6 +120,16 @@ body {
     margin-left: 12px;
 }
 
+.review-link{
+    color: var(--button);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.5s ease;
+}
+
+.review-link:hover {
+    color: var(--secondary-button-hover);
+}
 
 #detailRoadmapSections {
     display: flex;

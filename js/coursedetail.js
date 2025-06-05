@@ -291,7 +291,10 @@ document.addEventListener('DOMContentLoaded', () => {
   if (courseNameParam) {
     const decodedCourseName = decodeURIComponent(courseNameParam);
     const courseData = coursesData[decodedCourseName];
-
+    const reviewLink = document.querySelector('.review-link');
+    if (reviewLink) {
+        reviewLink.href = `review.html?course=${encodeURIComponent(courseNameParam)}`;
+    }
     if (courseData) {
       courseDetailPageTitle.textContent = `${decodedCourseName} - Course Detail - BeeYond`;
 

@@ -1,5 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
 
+:root {
+    --button: #FF8600;
+    --primary: #27187E;
+    --background: #F1F2F6;
+    --nav-color: #758BFD;
+    --border-weight-size: 3px;
+    --corner-radius-size: 12px;
+    --navbar-link-hover-color: var(--background);
+    --navbar-link-active-bg: rgba(255, 255, 255, 0.15);
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -27,19 +38,22 @@ body {
 }
 
 .review-header .back-btn {
-    background-color: #f0f0f0;
-    border: 1px solid #ccc;
-    padding: 10px 20px;
-    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--button);
+    border: 1px solid #ddd;
+    padding: 10px 15px;
+    border-radius: 20px;
     cursor: pointer;
-    font-weight: 500;
-    color: #555;
-    transition: background-color 0.3s ease, border-color 0.3s ease;
+    font-size: 14px;
+    color: white;
+    transition: background-color 0.5s ease, color 0.5s ease;
 }
 
 .review-header .back-btn:hover {
-    background-color: #e0e0e0;
-    border-color: #aaa;
+    background-color: var(--secondary-button-hover);
+    color: var(--button)
 }
 
 .review-header h1 {
