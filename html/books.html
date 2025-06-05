@@ -3,90 +3,89 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BeeYond</title>
+    <title>BeeYond - Books</title>
     <link rel="stylesheet" href="../css/books.css">
     <link rel="stylesheet" href="../css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-<header class="header">
-    <div class="nav-container">
-        <div class="logo">
-            <h1>BeeYond</h1>
-        </div>
-        <nav class="nav-menu">
-            <a href="../html/home.html" class="nav-link">Home</a>
-            <a href="../html/course.html" class="nav-link">Courses</a>
-            <a href="../html/subscription.html" class="nav-link">Subscription</a>
-            <a href="../html/about.html" class="nav-link">About Us</a>
-        </nav>
-        <div class="auth-buttons">
-            <button type="button" class="login-btn" id="loginButton">Login</button>
-            <div class="user-profile" id="userProfile" style="display: none;">
-                <img src="https://via.placeholder.com/32/758BFD/FFFFFF?text=👤" alt="User Profile" class="profile-img">
-                <div class="profile-dropdown" id="profileDropdown">
-                    <a href="../html/profile.html">My Profile</a>
-                    <a href="../html/login.html" id="logoutButton">Logout</a>
+    <header class="header">
+        <div class="nav-container">
+            <div class="logo">
+                <h1>BeeYond</h1>
+            </div>
+            <nav class="nav-menu">
+                <a href="../html/home.html" class="nav-link">Home</a>
+                <a href="../html/course.html" class="nav-link">Courses</a>
+                <a href="../html/subscription.html" class="nav-link">Subscription</a>
+                <a href="../html/about.html" class="nav-link">About Us</a>
+            </nav>
+            <div class="auth-buttons">
+                <button type="button" class="login-btn" id="loginButton">Login</button>
+                <div class="user-profile" id="userProfile">
+                    <img src="https://via.placeholder.com/32/758BFD/FFFFFF?text=👤" alt="User Profile" class="profile-img">
+                    <div class="profile-dropdown" id="profileDropdown">
+                        <a href="../html/profile.html">My Profile</a>
+                        <a href="../html/login.html" id="logoutButton">Logout</a>
+                    </div>
                 </div>
             </div>
+            <div class="burger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
         </div>
-        <div class="burger">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-    </div>
-</header>
+    </header>
+
     <main class="content-wrapper">
         <aside class="sidebar">
             <button type="button" class="back-to-course-button">Back to course</button>
             <div class="course-title-box">
-                <h1>Course 1</h1>
+                <h1 id="courseTitle">Calculus I</h1>
                 <p>Exercises</p>
             </div>
-            <div class="chapter-navigation">
-                <div class="chapter-item active">
-                    <span class="chapter-text">Chapter 1</span>
+            <div class="chapter-navigation" id="chapterNavigation">
+                <div class="chapter-item active" 
+                     data-chapter-id="1" 
+                     data-pdf-src="../assets/pdf/Limits.pdf"
+                     data-content-src="../assets/content/limits_content.html">
+                    <span class="chapter-text">Chapter 1: Limits</span>
                     <span class="arrow-icon">▲</span>
                     <span class="chapter-subtext">References</span>
                 </div>
+
+                <div class="chapter-item" 
+                     data-chapter-id="2" 
+                     data-pdf-src="../assets/pdf/Derivatives.pdf"
+                     data-content-src="../assets/content/derivatives_content.html">
+                    <span class="chapter-text">Chapter 2: Derivatives</span>
+                    <span class="arrow-icon">▼</span>
+                    <span class="chapter-subtext">References</span>
+                </div>
+
+                <div class="chapter-item" 
+                     data-chapter-id="3" 
+                     data-pdf-src="../assets/pdf/Integrals.pdf"
+                     data-content-src="../assets/content/integrals_content.html">
+                    <span class="chapter-text">Chapter 3: Integrals</span>
+                    <span class="arrow-icon">▼</span>
+                    <span class="chapter-subtext">References</span>
+                </div>
                 <div class="pdf-viewer-container">
-                    <iframe src="http://example.com/assets/sample.pdf" type="application/pdf" title="Reference Document"> </iframe>
-                    <p>Your browser does not support PDFs. <a href="http://example.com/assets/sample.pdf">Download the PDF</a>.</p>
-                </div>
-                <div class="chapter-item">
-                    <span class="chapter-text">Chapter 2</span>
-                    <span class="arrow-icon">▼</span>
-                    <span class="chapter-subtext">References</span>
-                </div>
-                <div class="chapter-item">
-                    <span class="chapter-text">Chapter 3</span>
-                    <span class="arrow-icon">▼</span>
-                    <span class="chapter-subtext">References</span>
+                    <iframe id="pdfViewerIframe" type="application/pdf" title="Reference Document"></iframe>
+                    <p>Your browser does not support PDFs. <a id="pdfDownloadLink" href="#">Download the PDF</a>.</p>
                 </div>
             </div>
         </aside>
 
         <section class="main-content">
-            <div class="static-text-block">
-                <p>When it comes to the pros and cons of various programming languages, programmers and computer scientists alike are usually highly opinionated. In contrast, only relatively little high-quality objective information is available about the relative merits of different languages. The scientific and engineering literature provides many comparisons of programming languages --- in different ways and with different restrictions.</p>
-
-                <p>Some are purely theoretical discussions of certain language constructs. The many examples range from Dijkstra's famous letter "Go To statement considered harmful" [6] to comprehensive surveys of many languages [9, 16]. These are non-quantitative and usually purify speculative. Some such works are more or less pure opinion-pieces.</p>
-
-                <p>Some are benchmarks comparing a simple implementation of a certain program in either language for expressiveness or resource consumption, etc.: an example is [10]. Such comparisons are useful, but extremely narrow and hence always slightly dubious: Is each of the implementations adequate? Or could it have been done much better in the given language? Furthermore, the programs compared in this manner are sometimes extremely small and simple.</p>
-
-                <p>Some are narrow controlled experiments: e.g. [7, 14], where one or more programming languages (e.g., Ada) are analyzed via a collection of programs representing the specific class of applications (e.g., embedded systems) where these languages are employed [1, 2, 13, p.227], or a whole notational style: e.g., [3, 12, 18].</p>
-
-                <p>Some are empirical comparisons based on several and larger programs, e.g. [9]. They discuss for instance defect rates or productivity figures. The problem of these comparisons is lack of homogeneity: Each language is represented by different programs and it is often very clear from the differences (or lack of differences) originating from the language as opposed to differences that are due to different programmer backgrounds, different software processes, different application domains, different design structures, etc.</p>
-
-                <p>The present work provides some objective information comparing several languages, namely C, C++, Java, Perl, Python, Rexx, and Tcl. It has the following features:</p>
-                <ul>
-                    <li>The same program (i.e. an implementation of the same set of requirements) is considered for each language. Hence, the comparison is narrow but homogeneous.</li>
-                    <li>For each language, we analyze not a single implementation of the program but a number of separate implementations by different programmers. Such a group-wise comparison has two advantages. First, it smoothes out the differences between individual programmers (which threaten the validity of any comparison based on just one implementation per language). Second, it allows to assess and compare the language-specific effects of variations in programming style.</li>
-                </ul>
+            <div class="static-text-block" id="chapterTextBlock">
+                <p>Select a chapter to view its content and corresponding PDF.</p>
             </div>
         </section>
     </main>
+
     <script src="../js/common.js"></script>
     <script src="../js/books.js"></script>
 </body>
