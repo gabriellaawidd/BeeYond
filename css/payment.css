@@ -5,87 +5,17 @@
     --nav-color: #758BFD;
     --border-weight-size: 3px;
     --corner-radius-size: 12px;
-    --card-background: #FFFFFF; 
+    --card-background: #FFFFFF;
     --purple-button: #8A2BE2; 
 }
 
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    background-color: var(--background);
-    color: #333;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-}
-
-.navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: var(--primary);
-    color: white;
-    padding: 15px 40px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    flex-wrap: wrap;
-}
-
-.navbar .logo {
-    font-size: 24px;
-    font-weight: bold;
-    margin-right: 20px;
-}
-
-.navbar nav {
-    flex-grow: 1;
-}
-
-.navbar nav ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: flex-start;
-}
-
-.navbar nav ul li {
-    margin-right: 30px;
-}
-
-.navbar nav ul li a {
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-    transition: color 0.3s ease;
-}
-
-.navbar nav ul li a:hover {
-    color: var(--nav-color);
-}
-
-.profile-button {
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 0;
-}
-
-.profile-button img {
-    width: 28px;
-    height: 28px;
-    border-radius: 50%;
-    border: 2px solid white;
-}
-
-
-/* Content Area */
 .content-area {
     flex: 1;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 40px 20px; 
-    background-color: #E6E8FA; 
+    padding: 40px 20px;
+    background-color: var(--background);
 }
 
 .subscription-card {
@@ -93,20 +23,20 @@ body {
     border-radius: var(--corner-radius-size);
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     display: flex;
-    max-width: 900px; 
+    max-width: 950px;
     width: 100%;
-    overflow: hidden; 
+    overflow: hidden;
 }
 
 .subscription-summary {
     flex: 1;
     padding: 30px;
-    background-color: var(--card-background); 
+    background-color: var(--card-background);
     display: flex;
     flex-direction: column;
     justify-content: center; 
     gap: 15px;
-    border-right: 1px solid #eee; 
+    border-right: 1px solid #eee;
 }
 
 .subscription-summary h2 {
@@ -114,26 +44,31 @@ body {
     color: var(--primary);
     margin-top: 0;
     margin-bottom: 20px;
+    font-family: 'DM Serif Text', serif;
 }
 
-.subscription-summary .price-details span{
+.subscription-summary .price-details {
     display: flex;
     align-items: baseline;
     font-size: 36px;
     font-weight: bold;
     color: #000;
+    justify-content: center;
+    margin-bottom: 10px; 
 }
 
-.subscription-summary .price-details .per-month {
-    font-size: 18px;
-    font-weight: normal;
-    margin-left: 5px;
-}
-
+.subscription-summary .price-details .per-month,
 .subscription-summary .price-details .tax {
     font-size: 18px;
     font-weight: normal;
     color: #666;
+}
+
+.subscription-summary .price-details .per-month {
+    margin-left: 5px;
+}
+
+.subscription-summary .price-details .tax {
     margin-left: 15px;
 }
 
@@ -145,7 +80,7 @@ body {
 }
 
 .payment-form {
-    flex: 2; 
+    flex: 2;
     padding: 30px;
     display: flex;
     flex-direction: column;
@@ -157,47 +92,49 @@ body {
     color: var(--primary);
     margin-top: 0;
     margin-bottom: 10px;
+    font-family: 'DM Serif Text', serif;
 }
 
 .payment-methods {
     display: flex;
     gap: 10px;
     margin-bottom: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
 }
-.payment-methods img {
-    width: 40px; 
-    height: 40px; 
-    cursor: pointer;
-    transition: transform 0.3s ease, border 0.3s ease;
-    margin-left: auto;
-    margin-right: auto;
-    display: block;
-}
-.payment-methods img:hover {
-    transform: scale(1.05);
-}
+
 .method-box {
-    width: 100px; 
-    height: 40px; 
+    width: 70px;
+    height: 50px;
     background-color: #E0E0E0;
     border-radius: 8px;
     cursor: pointer;
-    transition: background-color 0.3s ease, border 0.3s ease;
+    transition: background-color 0.3s ease, border 0.3s ease, transform 0.2s ease;
     border: 2px solid transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.method-box img {
+    max-width: 90%;
+    max-height: 90%;
+    object-fit: contain;
+}
+
+.method-box:hover {
+    transform: translateY(-2px);
 }
 
 .method-box.selected {
     background-color: #D1D1D1;
-    border-color: var(--nav-color); 
+    border-color: var(--nav-color);
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
 }
 
 .form-group {
     margin-bottom: 15px;
-}
-
-.required {
-    color: red;
-    font-size: 14px;
 }
 
 .form-group label {
@@ -207,19 +144,27 @@ body {
     color: #555;
 }
 
-.form-group input[type="text"] {
-    width: calc(100% - 20px); 
+.form-group input[type="text"],
+.form-group input[type="email"] { 
+    width: calc(100% - 20px);
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
     font-size: 16px;
     outline: none;
-    transition: border-color 0.2s ease;
-    color: black;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
-.form-group input[type="text"]:focus {
+.form-group input[type="text"]:focus,
+.form-group input[type="email"]:focus {
     border-color: var(--nav-color);
+    box-shadow: 0 0 0 3px rgba(117, 139, 253, 0.2);
+}
+
+.required {
+    color: red;
+    margin-left: 3px;
+    font-weight: normal;
 }
 
 .input-row {
@@ -228,18 +173,17 @@ body {
 }
 
 .input-row .cvc-group {
-    flex: 0 0 80px; 
+    flex: 0 0 80px;
     display: flex;
     flex-direction: column;
 }
 
 .input-row .cvc-group input {
-    width: 100%; 
+    width: 100%;
 }
 
-
 .input-row .field-half {
-    flex: 1; 
+    flex: 1;
 }
 
 .purchase-button {
@@ -252,52 +196,78 @@ body {
     font-weight: bold;
     font-size: 18px;
     margin-top: 20px;
-    transition: background-color 0.3s ease;
-    align-self: flex-end; 
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    align-self: flex-end;
 }
 
 .purchase-button:hover {
     opacity: 0.9;
+    transform: translateY(-2px);
 }
 
 @media (max-width: 768px) {
-    .profile-button {
-        position: absolute; 
-        top: 15px;
-        right: 20px;
-    }
-
     .content-area {
         padding: 20px;
     }
 
     .subscription-card {
-        flex-direction: column; 
+        flex-direction: column;
+        max-width: 100%;
     }
 
     .subscription-summary {
-        border-right: none; 
-        border-bottom: 1px solid #eee; 
-        padding: 20px; 
+        border-right: none;
+        border-bottom: 1px solid #eee;
+        padding: 20px;
+    }
+
+    .subscription-summary h2, .payment-form h3 {
+        font-size: 24px;
+        margin-bottom: 15px;
+    }
+
+    .subscription-summary .price-details {
+        font-size: 30px;
+        margin-bottom: 15px; 
+    }
+
+    .subscription-summary .price-details .per-month,
+    .subscription-summary .price-details .tax {
+        font-size: 16px;
+    }
+
+    .subscription-summary .total-price {
+        font-size: 24px;
     }
 
     .payment-form {
-        padding: 20px; 
+        padding: 20px;
+        gap: 10px;
+    }
+
+    .payment-methods {
+        justify-content: center;
+        gap: 8px;
+    }
+
+    .method-box {
+        width: 60px;
+        height: 45px;
     }
 
     .input-row {
-        flex-direction: column; 
-        gap: 0; 
-    }
-
-    .input-row .cvc-group {
-        flex: none; 
-        width: 100%; 
-        margin-top: 15px; 
+        flex-direction: column;
+        gap: 0;
     }
 
     .input-row .field-half {
-        width: 100%; 
+        width: 100%;
+    }
+
+    .input-row .cvc-group {
+        flex: none;
+        width: 100%;
+        margin-top: 15px;
     }
 
     .form-group label {
@@ -305,8 +275,10 @@ body {
     }
 
     .purchase-button {
-        width: 100%; 
-        align-self: center; 
+        width: 100%;
+        align-self: center;
+        font-size: 16px;
+        padding: 12px 25px;
     }
 }
 
@@ -316,7 +288,8 @@ body {
     }
 
     .subscription-card {
-        flex-direction: column; 
+        flex-direction: column;
+        max-width: 700px;
     }
 
     .subscription-summary {
@@ -329,14 +302,14 @@ body {
     }
 
     .input-row {
-        flex-wrap: wrap; 
+        flex-wrap: wrap;
     }
-    
+
     .input-row .field-half {
-        flex-basis: calc(50% - 10px); 
+        flex-basis: calc(50% - 10px);
     }
 
     .input-row .cvc-group {
-        flex-basis: 100px; 
+        flex-basis: 90px;
     }
 }

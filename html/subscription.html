@@ -8,27 +8,42 @@
     <link rel="stylesheet" href="../css/subscription.css">
 </head>
 <body>
-    <header class="header">
-        <div class="nav-container">
-            <div class="logo">
-                <h1>BeeYond</h1>
-            </div>
-            <nav class="nav-menu">
-                <a href="../html/home.html" class="nav-link active">Home</a>
-                <a href="../html/course.html" class="nav-link">Courses</a>
-                <a href="../html/subscription.html" class="nav-link">Subscription</a>
-                <a href="../aboutus.html" class="nav-link">About Us</a>
-            </nav>
-            <button type="button" class="login-btn">Login</button>
+<header class="header">
+    <div class="nav-container">
+        <div class="logo">
+            <h1>BeeYond</h1>
         </div>
-    </header>
+        <nav class="nav-menu">
+            <a href="../html/home.html" class="nav-link">Home</a>
+            <a href="../html/course.html" class="nav-link">Courses</a>
+            <a href="../html/subscription.html" class="nav-link active">Subscription</a>
+            <a href="../aboutus.html" class="nav-link">About Us</a>
+        </nav>
+        <div class="auth-buttons">
+            <button type="button" class="login-btn" id="loginButton">Login</button>
+            <div class="user-profile" id="userProfile" style="display: none;">
+                <img src="https://via.placeholder.com/32/758BFD/FFFFFF?text=👤" alt="User Profile" class="profile-img">
+                <div class="profile-dropdown" id="profileDropdown">
+                    <a href="../html/profile.html">My Profile</a>
+                    <a href="../html/login.html" id="logoutButton">Logout</a>
+                </div>
+            </div>
+        </div>
+        <div class="burger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+</header>
+
     <main class="container">
         <div class="subscription-content">
             <h1 class="main-heading">
                 Subscription plans to help
             </h1>
             <h1 class="main-heading">
-                <span class="highlight">You</span> learn better.
+                <span class="highlight">You</span> learn better
             </h1>
             <p class="description">
                 This subscription will allow you to use more features, courses, and special perks
@@ -36,31 +51,30 @@
             </p>
             <div class="plans-container">
                 <div class="plan monthly-plan">
-                    <h2 class="plan-title">Monthly Plan</h2>
+                    <h2 class="plan-title" data-plan-type="monthly">Monthly Plan</h2>
                     <ul class="plan-features">
                         <li>New features</li>
                         <li>Premium courses</li>
                     </ul>
-                    <div class="plan-price">
-                        Rp69.000/Month
+                    <div class="plan-price" data-raw-price="69000"> Rp69.000/Month
                     </div>
-                    <button type="button" class="purchase-btn">Purchase now</button>
+                    <button type="button" class="purchase-btn" data-plan-type="monthly">Purchase now</button>
                 </div>
                 <div class="plan yearly-plan">
-                    <h2 class="plan-title">Yearly Plan</h2>
+                    <h2 class="plan-title" data-plan-type="yearly">Yearly Plan</h2>
                     <ul class="plan-features">
                         <li>New features</li>
                         <li>Premium courses</li>
                     </ul>
-                    <div class="plan-price">
-                        Rp420.000/Year
+                    <div class="plan-price" data-raw-price="420000"> Rp420.000/Year
                         <span class="discount">(50% total price)</span>
                     </div>
-                    <button type="button" class="purchase-btn highlight-btn">Purchase now</button>
+                    <button type="button" class="purchase-btn highlight-btn" data-plan-type="yearly">Purchase now</button>
                 </div>
             </div>
         </div>
     </main>
+
     <footer class="footer">
         <div class="footer-content">
             <div class="footer-brand">
@@ -80,5 +94,5 @@
         </div>
     </footer>
     <script src="../js/subscription.js"></script>
-</body>
+    <script src="../js/common.js"></script> </body>
 </html>
