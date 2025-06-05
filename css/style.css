@@ -281,7 +281,7 @@ body {
     color: white;
 }
 
-.social-link {
+.social-link ul{
     display: flex;
     flex-direction: row;
     gap: 1rem;
