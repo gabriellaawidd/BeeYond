@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Text:ital@0;1&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
 
 :root {
     --button: #FF8600;
@@ -7,7 +8,24 @@
     --nav-color: #758BFD;
     --border-weight-size: 3px;
     --corner-radius-size: 12px;
-    --highlight-text-color: var(--nav-color); /* Added for consistency of highlight color */
+    --highlight-text-color: var(--nav-color);
+    --card-background: #FFFFFF;
+    --text-dark: #333333;
+    --text-medium: #555555;
+    --text-light: #666666;
+    --border-color-light: #EEEEEE;
+    --input-border-color: #CCCCCC;
+    --focus-ring-color: rgba(117, 139, 253, 0.4);
+    --purple-button: #5A40C1;
+
+    --font-size-base: 16px;
+    --font-size-sm: 0.9em;
+    --font-size-md: 1.1em;
+    --font-size-lg: 1.5em;
+    --font-size-xl: 2em;
+    --font-size-price: 2.5em;
+
+    --button-text-size: 1.1em;
 }
 
 * {
@@ -17,12 +35,13 @@
 }
 
 body {
-    font-family: 'Arial', sans-serif; /* Changed to single quotes for consistency */
+    font-family: 'Roboto', sans-serif, Arial;
     background-color: var(--background);
-    color: #333; /* Default text color for general body content */
+    color: var(--text-dark);
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+    line-height: 1.6;
 }
 
 .content-area {
@@ -37,11 +56,12 @@ body {
 .subscription-card {
     background-color: var(--card-background);
     border-radius: var(--corner-radius-size);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
     display: flex;
     max-width: 950px;
     width: 100%;
     overflow: hidden;
+    margin: 20px;
 }
 
 .subscription-summary {
@@ -50,34 +70,41 @@ body {
     background-color: var(--card-background);
     display: flex;
     flex-direction: column;
-    justify-content: center; 
+    justify-content: center;
     gap: 15px;
-    border-right: 1px solid #eee;
+    border-right: 1px solid var(--border-color-light);
+    text-align: center;
 }
 
 .subscription-summary h2 {
-    font-size: 28px;
+    font-size: clamp(1.5rem, 5vw, var(--font-size-xl));
     color: var(--primary);
     margin-top: 0;
     margin-bottom: 20px;
     font-family: 'DM Serif Text', serif;
+    font-weight: 700;
 }
 
 .subscription-summary .price-details {
     display: flex;
     align-items: baseline;
-    font-size: 36px;
-    font-weight: bold;
-    color: #000;
+    font-size: clamp(2.5rem, 8vw, var(--font-size-price));
+    font-weight: 700;
+    color: var(--text-dark);
     justify-content: center;
-    margin-bottom: 10px; 
+    margin-bottom: 10px;
+}
+
+.subscription-summary .price-details .currency {
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
+    margin-right: 5px;
 }
 
 .subscription-summary .price-details .per-month,
 .subscription-summary .price-details .tax {
-    font-size: 18px;
+    font-size: clamp(0.9rem, 2vw, var(--font-size-base));
     font-weight: normal;
-    color: #666;
+    color: var(--text-light);
 }
 
 .subscription-summary .price-details .per-month {
@@ -89,8 +116,8 @@ body {
 }
 
 .subscription-summary .total-price {
-    font-size: 28px;
-    font-weight: bold;
+    font-size: clamp(1.5rem, 5vw, var(--font-size-xl));
+    font-weight: 700;
     margin-top: 20px;
     color: var(--primary);
 }
@@ -104,49 +131,54 @@ body {
 }
 
 .payment-form h3 {
-    font-size: 22px;
+    font-size: clamp(1.3rem, 4vw, var(--font-size-lg));
     color: var(--primary);
     margin-top: 0;
     margin-bottom: 10px;
     font-family: 'DM Serif Text', serif;
+    font-weight: 700;
 }
 
 .payment-methods {
     display: flex;
-    gap: 10px;
+    gap: 12px;
     margin-bottom: 20px;
     flex-wrap: wrap;
     justify-content: center;
 }
 
 .method-box {
-    width: 70px;
-    height: 50px;
-    background-color: #E0E0E0;
+    width: 80px;
+    height: 55px;
+    background-color: var(--background);
     border-radius: 8px;
     cursor: pointer;
-    transition: background-color 0.3s ease, border 0.3s ease, transform 0.2s ease;
-    border: 2px solid transparent;
+    transition: all 0.3s ease;
+    border: 2px solid var(--border-color-light);
     display: flex;
     justify-content: center;
     align-items: center;
     overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
 }
 
 .method-box img {
-    max-width: 90%;
-    max-height: 90%;
+    max-width: 85%;
+    max-height: 85%;
     object-fit: contain;
 }
 
 .method-box:hover {
-    transform: translateY(-2px);
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+    border-color: rgba(117, 139, 253, 0.5);
 }
 
 .method-box.selected {
-    background-color: #D1D1D1;
+    background-color: var(--background);
     border-color: var(--nav-color);
-    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 10px rgba(117, 139, 253, 0.4);
+    transform: translateY(-1px);
 }
 
 .form-group {
@@ -156,25 +188,62 @@ body {
 .form-group label {
     display: block;
     margin-bottom: 8px;
-    font-weight: bold;
-    color: #555;
+    font-weight: 600;
+    color: var(--text-medium);
 }
 
 .form-group input[type="text"],
-.form-group input[type="email"] { 
+.form-group input[type="email"],
+.form-group input[type="number"],
+.form-group input[type="date"] {
     width: calc(100% - 20px);
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 16px;
+    padding: 12px;
+    border: 1px solid var(--input-border-color);
+    border-radius: 8px;
+    font-size: var(--font-size-base);
     outline: none;
     transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
 }
 
 .form-group input[type="text"]:focus,
-.form-group input[type="email"]:focus {
+.form-group input[type="email"]:focus,
+.form-group input[type="number"]:focus,
+.form-group input[type="date"]:focus {
     border-color: var(--nav-color);
-    box-shadow: 0 0 0 3px rgba(117, 139, 253, 0.2);
+    box-shadow: 0 0 0 4px var(--focus-ring-color);
+}
+
+.payment-fields {
+    margin-top: 20px;
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+}
+
+.gpay-button {
+    background-color: #4285F4;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    display: block;
+    width: fit-content;
+    margin: 15px 0;
+}
+
+.gpay-button:hover {
+    background-color: #357ae8;
+}
+
+.method-box.selected {
+    border: 2px solid #758BFD;
+    box-shadow: 0 0 8px rgba(117, 139, 253, 0.4);
 }
 
 .required {
@@ -186,10 +255,16 @@ body {
 .input-row {
     display: flex;
     gap: 15px;
+    flex-wrap: wrap;
+}
+
+.input-row .field-half {
+    flex: 1;
+    min-width: calc(50% - 15px);
 }
 
 .input-row .cvc-group {
-    flex: 0 0 80px;
+    flex: 0 0 100px;
     display: flex;
     flex-direction: column;
 }
@@ -198,27 +273,63 @@ body {
     width: 100%;
 }
 
-.input-row .field-half {
-    flex: 1;
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+    margin-top: 25px;
+    flex-wrap: wrap;
+}
+
+.back-button,
+.purchase-button {
+    border: none;
+    padding: 12px 25px;
+    border-radius: var(--corner-radius-size);
+    cursor: pointer;
+    font-weight: 700;
+    font-size: var(--button-text-size);
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    width: auto;
+    min-width: 150px;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.back-button {
+    background-color: var(--nav-color);
+    color: white;
+}
+
+.back-button:hover {
+    background-color: color-mix(in srgb, var(--nav-color) 90%, black);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.back-button:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .purchase-button {
     background-color: var(--purple-button);
     color: white;
-    border: none;
-    padding: 15px 30px;
-    border-radius: var(--corner-radius-size);
-    cursor: pointer;
-    font-weight: bold;
-    font-size: 18px;
-    margin-top: 20px;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-    align-self: flex-end;
+    margin-top: 0;
+    align-self: auto;
 }
 
 .purchase-button:hover {
-    opacity: 0.9;
-    transform: translateY(-2px);
+    background-color: color-mix(in srgb, var(--purple-button) 90%, black);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.purchase-button:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 @media (max-width: 768px) {
@@ -229,22 +340,25 @@ body {
     .subscription-card {
         flex-direction: column;
         max-width: 100%;
+        margin: 0;
     }
 
     .subscription-summary {
         border-right: none;
-        border-bottom: 1px solid #eee;
-        padding: 20px;
+        border-bottom: 1px solid var(--border-color-light);
+        padding: 25px;
+        text-align: center;
     }
 
-    .subscription-summary h2, .payment-form h3 {
+    .subscription-summary h2,
+    .payment-form h3 {
         font-size: 24px;
         margin-bottom: 15px;
     }
 
     .subscription-summary .price-details {
         font-size: 30px;
-        margin-bottom: 15px; 
+        margin-bottom: 15px;
     }
 
     .subscription-summary .price-details .per-month,
@@ -257,44 +371,53 @@ body {
     }
 
     .payment-form {
-        padding: 20px;
-        gap: 10px;
+        padding: 25px;
+        gap: 12px;
     }
 
     .payment-methods {
         justify-content: center;
-        gap: 8px;
+        gap: 10px;
     }
 
     .method-box {
-        width: 60px;
-        height: 45px;
+        width: 65px;
+        height: 50px;
     }
 
     .input-row {
         flex-direction: column;
-        gap: 0;
+        gap: 15px;
     }
 
     .input-row .field-half {
         width: 100%;
+        min-width: auto;
     }
 
     .input-row .cvc-group {
         flex: none;
         width: 100%;
-        margin-top: 15px;
+        margin-top: 0;
     }
 
     .form-group label {
-        margin-top: 15px;
+        margin-top: 0;
     }
 
+    .form-actions {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+        margin-top: 20px;
+    }
+
+    .back-button,
     .purchase-button {
         width: 100%;
-        align-self: center;
-        font-size: 16px;
-        padding: 12px 25px;
+        min-width: auto;
+        font-size: var(--font-size-base);
+        padding: 14px 25px;
     }
 }
 
@@ -305,27 +428,43 @@ body {
 
     .subscription-card {
         flex-direction: column;
-        max-width: 700px;
+        max-width: 750px;
     }
 
     .subscription-summary {
         border-right: none;
-        border-bottom: 1px solid #eee;
+        border-bottom: 1px solid var(--border-color-light);
+        padding: 30px;
     }
 
     .payment-form {
-        padding: 25px;
+        padding: 30px;
     }
 
     .input-row {
         flex-wrap: wrap;
+        gap: 15px;
     }
 
     .input-row .field-half {
-        flex-basis: calc(50% - 10px);
+        flex-basis: calc(50% - 8px);
     }
 
     .input-row .cvc-group {
-        flex-basis: 90px;
+        flex: 0 0 100px;
+        align-self: flex-start;
+    }
+
+    .form-actions {
+        justify-content: flex-end;
+        gap: 15px;
+        margin-top: 25px;
+    }
+
+    .back-button,
+    .purchase-button {
+        min-width: 140px;
+        font-size: var(--button-text-size);
+        padding: 10px 20px;
     }
 }

@@ -31,10 +31,9 @@ document.addEventListener('DOMContentLoaded', () => {
             if (loginButton) loginButton.style.display = 'none';
             if (userProfileDiv) {
                 userProfileDiv.style.display = 'flex';
-                if (profileImg && userProfilePic) {
-                    profileImg.src = userProfilePic;
-                } else if (profileImg) {
-                    profileImg.src = 'https://via.placeholder.com/32/758BFD/FFFFFF?text=👤';
+                if (profileImg) {
+                    profileImg.src = userProfilePic || 'https://via.placeholder.com/32/758BFD/FFFFFF?text=👤';
+                    profileImg.alt = 'User Profile';
                 }
             }
         } else {
@@ -49,6 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
             loginButton.classList.add('clicked');
             setTimeout(() => {
                 loginButton.classList.remove('clicked');
+                sessionStorage.setItem('redirectAfterLogin', window.location.href);
                 window.location.href = '../html/login.html';
             }, 200);
         });
@@ -64,10 +64,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     document.addEventListener('click', (event) => {
-        if (profileDropdown && profileDropdown.classList.contains('active')) {
-            if (!userProfileDiv.contains(event.target)) {
-                profileDropdown.classList.remove('active');
-            }
+        if (profileDropdown && profileDropdown.classList.contains('active') &&
+            !userProfileDiv.contains(event.target) && !profileDropdown.contains(event.target)) {
+            profileDropdown.classList.remove('active');
         }
     });
 
@@ -79,6 +78,8 @@ document.addEventListener('DOMContentLoaded', () => {
             sessionStorage.removeItem('userProfilePic');
             updateAuthButtons();
             alert('You have been logged out.');
+
+            window.location.href = '../html/home.html';
         });
     }
 

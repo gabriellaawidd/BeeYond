@@ -1,147 +1,168 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const methodBoxes = document.querySelectorAll('.method-box');
+    const paymentMethods = document.querySelectorAll('.method-box');
+    const cardPaymentFields = document.getElementById('cardPaymentFields');
+    const paypalPaymentFields = document.getElementById('paypalPaymentFields');
+    const gpayPaymentFields = document.getElementById('gpayPaymentFields');
+    const backButton = document.querySelector('.back-button');
+    const purchaseButton = document.querySelector('.purchase-button');
 
-    methodBoxes.forEach(box => {
-        box.addEventListener('click', () => {
-            methodBoxes.forEach(item => item.classList.remove('selected'));
-            box.classList.add('selected');
+    const basePriceElement = document.getElementById('basePrice');
+    const totalPriceElement = document.getElementById('totalPrice');
+
+    const storedBasePrice = parseFloat(sessionStorage.getItem('selectedPlanBasePrice'));
+    const storedFormattedPrice = sessionStorage.getItem('selectedPlanFormattedPrice'); // This should already contain "/Month" or "/Year"
+
+    const isLoggedIn = () => {
+        return localStorage.getItem('isLoggedIn') === 'true';
+    };
+
+    const updatePurchaseButtonState = () => {
+        if (isLoggedIn()) {
+            purchaseButton.disabled = false;
+            purchaseButton.style.cursor = 'pointer';
+            purchaseButton.style.opacity = '1';
+        } else {
+            purchaseButton.disabled = true;
+            purchaseButton.style.cursor = 'not-allowed';
+            purchaseButton.style.opacity = '0.7';
+        }
+    };
+
+    const hideAllPaymentFields = () => {
+        cardPaymentFields.style.display = 'none';
+        paypalPaymentFields.style.display = 'none';
+        gpayPaymentFields.style.display = 'none';
+    };
+
+    const showPaymentFields = (method) => {
+        hideAllPaymentFields();
+        cardPaymentFields.querySelectorAll('input').forEach(input => input.removeAttribute('required'));
+        paypalPaymentFields.querySelectorAll('input').forEach(input => input.removeAttribute('required'));
+
+        if (method === 'Visa' || method === 'MasterCard') {
+            cardPaymentFields.style.display = 'block';
+            cardPaymentFields.querySelectorAll('input').forEach(input => input.setAttribute('required', ''));
+        } else if (method === 'Paypal') {
+            paypalPaymentFields.style.display = 'block';
+            paypalPaymentFields.querySelector('#paypalEmail').setAttribute('required', '');
+        } else if (method === 'Gpay') {
+            gpayPaymentFields.style.display = 'block';
+        }
+    };
+
+    paymentMethods.forEach(methodBox => {
+        methodBox.addEventListener('click', () => {
+            paymentMethods.forEach(box => box.classList.remove('selected'));
+            methodBox.classList.add('selected');
+
+            const selectedMethod = methodBox.dataset.method;
+            showPaymentFields(selectedMethod);
         });
     });
 
-    const basePriceElement = document.getElementById('basePrice');
-    const billingCycleElement = document.getElementById('billingCycle');
-    const totalPriceElement = document.getElementById('totalPrice');
+    const initialSelectedMethodBox = document.querySelector('.method-box.selected');
+    if (initialSelectedMethodBox) {
+        showPaymentFields(initialSelectedMethodBox.dataset.method);
+    } else {
+        document.querySelector('.method-box[data-method="Visa"]').classList.add('selected');
+        showPaymentFields('Visa');
+    }
 
-    const selectedPlanType = sessionStorage.getItem('selectedPlanType'); 
-    const selectedPlanBasePrice = parseFloat(sessionStorage.getItem('selectedPlanBasePrice')); 
-    const taxRate = 0.10; 
-    const formatRupiah = (amount) => {
-        return new Intl.NumberFormat('id-ID', {
-            style: 'currency',
-            currency: 'IDR',
-            minimumFractionDigits: 2,
-            maximumFractionDigits: 2,
-        }).format(amount);
-    };
-
-    const displayPrices = () => {
-        let currentBasePrice = selectedPlanBasePrice;
-        let cycleText = "";
-
-        if (selectedPlanType === 'monthly') {
-            cycleText = "/Month";
-        } else if (selectedPlanType === 'yearly') {
-            cycleText = "/Year";
-        } else {
-            console.warn("No subscription plan type found in sessionStorage. Displaying default/fallback prices.");
-            currentBasePrice = 69000; 
-            cycleText = "/Month";
-        }
-
-        const calculatedTax = currentBasePrice * taxRate;
-        const finalTotalPrice = currentBasePrice + calculatedTax;
-
-        basePriceElement.textContent = formatRupiah(currentBasePrice);
-        billingCycleElement.textContent = cycleText;
-        totalPriceElement.textContent = formatRupiah(finalTotalPrice);
-    };
-
-    displayPrices();
+    if (backButton) {
+        backButton.addEventListener('click', () => {
+            window.location.href = '../html/subscription.html';
+        });
+    }
 
     const paymentForm = document.querySelector('.payment-form');
     paymentForm.addEventListener('submit', (event) => {
-        event.preventDefault(); 
+        event.preventDefault();
 
-        let isValid = true;
-        let errorMessage = '';
-
-        const selectedMethodBox = document.querySelector('.method-box.selected');
-        const paymentMethod = selectedMethodBox ? selectedMethodBox.dataset.method : null; 
-
-        const cardNumber = document.getElementById('cardNumber').value.trim();
-        const cvc = document.getElementById('cvc').value.trim();
-        const nameOnCard = document.getElementById('nameOnCard').value.trim();
-        const expMonth = document.getElementById('expMonth').value.trim(); 
-        const expYear = document.getElementById('expYear').value.trim();     
-        const address = document.getElementById('address').value.trim();
-        const city = document.getElementById('city').value.trim();
-        const province = document.getElementById('province').value.trim();
-        const country = document.getElementById('country').value.trim();
-
-        if (!paymentMethod) {
-            isValid = false;
-            errorMessage = 'Please select a payment method.';
-        } else if (paymentMethod === 'Visa' || paymentMethod === 'MasterCard') {
-            if (cardNumber === '' || !/^\d{16}$/.test(cardNumber)) { 
-                isValid = false;
-                errorMessage = 'Please enter a valid 16-digit card number.';
-            } else if (cvc === '' || !/^\d{3,4}$/.test(cvc)) { 
-                isValid = false;
-                errorMessage = 'Please enter a valid 3 or 4-digit CVC.';
-            } else if (expMonth === '' || !/^(0[1-9]|1[0-2])$/.test(expMonth)) { 
-                isValid = false;
-                errorMessage = 'Please enter a valid expiration month (MM).';
-            } else if (expYear === '' || !/^\d{2}$/.test(expYear)) { 
-                isValid = false;
-                errorMessage = 'Please enter a valid expiration year (YY).';
-            } else if (!isExpirationDateValid(expMonth, expYear)) { 
-                isValid = false;
-                errorMessage = 'Card expiration date is in the past.';
-            } else if (nameOnCard === '') {
-                isValid = false;
-                errorMessage = 'Please enter the name on your card.';
-            } else if (address === '' || city === '' || province === '' || country === '') {
-                isValid = false;
-                errorMessage = 'Please fill in all billing address fields.';
-            } else {
-                isValid = true;
-            }
-        } else if (paymentMethod === 'Paypal' || paymentMethod === 'Gpay') { 
-            if (address === '' || city === '' || province === '' || country === '') {
-                isValid = false;
-                errorMessage = 'Please fill in your billing address for this payment method.';
-            }
-        } else {
-            isValid = false;
-            errorMessage = 'Unknown payment method selected.';
+        if (!isLoggedIn()) {
+            alert('Please login to complete your purchase.');
+            return;
         }
 
-        if (!isValid) {
-            alert('Payment Error: ' + errorMessage);
-        } else {
-            console.log('Payment details submitted:', {
-                selectedPaymentMethod: paymentMethod,
-                cardNumber: (paymentMethod === 'Visa' || paymentMethod === 'MasterCard') ? cardNumber : 'N/A',
-                cvc: (paymentMethod === 'Visa' || paymentMethod === 'MasterCard') ? cvc : 'N/A',
-                expirationMonth: (paymentMethod === 'Visa' || paymentMethod === 'MasterCard') ? expMonth : 'N/A',
-                expirationYear: (paymentMethod === 'Visa' || paymentMethod === 'MasterCard') ? expYear : 'N/A',
-                nameOnCard: nameOnCard,
-                address: address,
-                city: city,
-                province: province,
-                country: country,
-                subscriptionTypeDisplayed: selectedPlanType,
-                basePriceDisplayed: basePriceElement.textContent,
-                totalPriceDisplayed: totalPriceElement.textContent,
-            });
+        const selectedMethod = document.querySelector('.method-box.selected').dataset.method;
+        const formData = new FormData(paymentForm);
+        const paymentData = {};
 
-            alert('Subscription purchased successfully!');
+        if (selectedMethod === 'Visa' || selectedMethod === 'MasterCard') {
+            paymentData.method = selectedMethod;
+            paymentData.cardNumber = formData.get('cardNumber');
+            paymentData.cvc = formData.get('cvc');
+            paymentData.nameOnCard = formData.get('nameOnCard');
+            paymentData.expMonth = formData.get('expMonth');
+            paymentData.expYear = formData.get('expYear');
+            paymentData.address = formData.get('address');
+            paymentData.city = formData.get('city');
+            paymentData.province = formData.get('province');
+            paymentData.country = formData.get('country');
+
+            if (!paymentData.cardNumber || !/^\d{13,19}$/.test(paymentData.cardNumber.replace(/\s/g, ''))) {
+                alert('Please enter a valid card number.');
+                return;
+            }
+            if (!paymentData.cvc || !/^\d{3,4}$/.test(paymentData.cvc)) {
+                alert('Please enter a valid CVC.');
+                return;
+            }
+            if (!paymentData.expMonth || !/^(0[1-9]|1[0-2])$/.test(paymentData.expMonth)) {
+                alert('Please enter a valid expiration month (MM).');
+                return;
+            }
+            if (!paymentData.expYear || !/^\d{2}$/.test(paymentData.expYear)) {
+                alert('Please enter a valid expiration year (YY).');
+                return;
+            }
+            const currentYearLastTwoDigits = new Date().getFullYear() % 100;
+            const currentMonth = new Date().getMonth() + 1;
+
+            if (parseInt(paymentData.expYear) < currentYearLastTwoDigits ||
+                (parseInt(paymentData.expYear) === currentYearLastTwoDigits && parseInt(paymentData.expMonth) < currentMonth)) {
+                alert('Expiration date cannot be in the past.');
+                return;
+            }
+
+
+        } else if (selectedMethod === 'Paypal') {
+            paymentData.method = selectedMethod;
+            paymentData.paypalEmail = formData.get('paypalEmail');
+            if (!paymentData.paypalEmail || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(paymentData.paypalEmail)) {
+                alert('Please enter a valid PayPal email address.');
+                return;
+            }
+            alert('Redirecting to PayPal for payment...');
+        } else if (selectedMethod === 'Gpay') {
+            paymentData.method = selectedMethod;
+            alert('Initiating Google Pay transaction...');
         }
+
+        console.log('Payment Data Submitted:', paymentData);
+        alert(`Payment for ${selectedMethod} initiated! Your subscription is now active!`);
     });
 
-    function isExpirationDateValid(month, year) {
-        const currentYear = new Date().getFullYear() % 100; 
-        const currentMonth = new Date().getMonth() + 1; 
+    const calculateTotalPrice = (basePrice) => {
+        const taxRate = 0.10;
+        const totalPrice = basePrice * (1 + taxRate);
+        totalPriceElement.textContent = `Rp ${totalPrice.toLocaleString('id-ID', { minimumFractionDigits: 2 })}`;
+    };
 
-        const expMonthNum = parseInt(month, 10);
-        const expYearNum = parseInt(year, 10);
+    const displayPrices = () => {
+        if (!isNaN(storedBasePrice) && storedFormattedPrice) {
+            basePriceElement.textContent = storedFormattedPrice; // Display the exact formatted price including "/Month" or "/Year"
+            calculateTotalPrice(storedBasePrice);
+        } else {
+            // Fallback for when no price is stored (e.g., direct access)
+            console.warn('No subscription plan found in session storage. Displaying default monthly price.');
+            const defaultMonthlyRawPrice = 69000;
+            const defaultMonthlyFormattedPrice = 'Rp69.000/Month'; // Match this to your subscription HTML
+            
+            basePriceElement.textContent = defaultMonthlyFormattedPrice;
+            calculateTotalPrice(defaultMonthlyRawPrice);
+        }
+    };
 
-        if (expYearNum < currentYear) {
-            return false;
-        }
-        if (expYearNum === currentYear && expMonthNum < currentMonth) {
-            return false;
-        }
-        return true;
-    }
+    displayPrices();
+    updatePurchaseButtonState();
 });

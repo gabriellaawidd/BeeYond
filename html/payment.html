@@ -36,107 +36,124 @@
         </div>
     </div>
 </header>
-    <main class="content-area">
-        <div class="subscription-card">
-            <div class="subscription-summary">
-                <h2>Subscription Plan</h2>
+<main class="content-area">
+    <div class="subscription-card">
+        <div class="subscription-summary">
+            <h2>Subscription Plan</h2>
 
-                <div class="price-details">
-                    <span class="price" id="basePrice">Rp 69.000,00</span>
-                    <span class="per-month" id="billingCycle">/Month</span>
-                    <span class="tax">+ 10% Tax</span>
+            <div class="price-details">
+                <span id="basePrice"></span> <span class="tax">+ 10% Tax</span>
+            </div>
+            <div class="total-price">
+                Total <span id="totalPrice"></span> </div>
+        </div>
+
+        <form class="payment-form">
+            <h3>Payment Method</h3>
+            <div class="payment-methods">
+                <div class="method-box selected" data-method="Visa"><img src="../assets/VisaLogo.png" alt="Visa"></div>
+                <div class="method-box" data-method="MasterCard"><img src="../assets/MasterCardLogo.png" alt="MasterCard"></div>
+                <div class="method-box" data-method="Paypal"><img src="../assets/PaypalLogo.png" alt="Paypal"></div>
+                <div class="method-box" data-method="Gpay"><img src="../assets/GpayLogo.png" alt="Google Pay"></div>
+            </div>
+
+            <h3>Payment Information</h3>
+            <div id="paymentDetailsContainer">
+                <div id="cardPaymentFields" class="payment-fields">
+                    <div class="form-group">
+                        <div class="input-row">
+                            <div class="field-half">
+                                <label for="cardNumber">Card Number <span class="required">*</span></label>
+                                <input type="text" id="cardNumber" name="cardNumber" placeholder="e.g., 4111222233334444" required>
+                            </div>
+                            <div class="cvc-group">
+                                <label for="cvc">CVC <span class="required">*</span></label>
+                                <input type="text" id="cvc" name="cvc" placeholder="e.g., 123" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="nameOnCard">Name On Card <span class="required">*</span></label>
+                        <input type="text" id="nameOnCard" name="nameOnCard" placeholder="e.g., John Doe" required>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="input-row">
+                            <div class="field-half">
+                                <label for="expMonth">Expiration Month <span class="required">*</span></label>
+                                <input type="text" id="expMonth" name="expMonth" placeholder="MM" pattern="\d{2}" maxlength="2" required>
+                            </div>
+                            <div class="field-half">
+                                <label for="expYear">Expiration Year <span class="required">*</span></label>
+                                <input type="text" id="expYear" name="expYear" placeholder="YY" pattern="\d{2}" maxlength="2" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="address">Address <span class="required">*</span></label>
+                        <input type="text" id="address" name="address" placeholder="e.g., Jl. Contoh No. 123" required>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="input-row">
+                            <div class="field-half">
+                                <label for="city">City <span class="required">*</span></label>
+                                <input type="text" id="city" name="city" placeholder="e.g., Jakarta" required>
+                            </div>
+                            <div class="field-half">
+                                <label for="province">Province <span class="required">*</span></label>
+                                <input type="text" id="province" name="province" placeholder="e.g., DKI Jakarta" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="country">Country <span class="required">*</span></label>
+                        <input type="text" id="country" name="country" placeholder="e.g., Indonesia" required>
+                    </div>
                 </div>
-                <div class="total-price">
-                    Total <span id="totalPrice">Rp 75.900,00</span>
+
+                <div id="paypalPaymentFields" class="payment-fields" style="display: none;">
+                    <div class="form-group">
+                        <label for="paypalEmail">PayPal Email <span class="required">*</span></label>
+                        <input type="email" id="paypalEmail" name="paypalEmail" placeholder="e.g., your@example.com" required>
+                    </div>
+                    <p>You will be redirected to PayPal to complete your purchase.</p>
+                </div>
+
+                <div id="gpayPaymentFields" class="payment-fields" style="display: none;">
+                    <p>Click the button below to pay with Google Pay.</p>
+                    <button type="button" id="gpayButton" class="gpay-button">Pay with Google Pay</button>
                 </div>
             </div>
 
-            <form class="payment-form">
-                <h3>Payment Method</h3>
-                <div class="payment-methods">
-                    <div class="method-box selected" data-method="Visa"><img src="../assets/VisaLogo.png" alt="Visa"></div>
-                    <div class="method-box" data-method="MasterCard"><img src="../assets/MasterCardLogo.png" alt="MasterCard"></div>
-                    <div class="method-box" data-method="Paypal"><img src="../assets/PaypalLogo.png" alt="Paypal"></div>
-                    <div class="method-box" data-method="Gpay"><img src="../assets/GpayLogo.png" alt="Google Pay"></div>
-                </div>
-
-                <h3>Payment Information</h3>
-                <div class="form-group">
-                    <div class="input-row">
-                        <div class="field-half">
-                            <label for="cardNumber">Card Number <span class="required">*</span></label>
-                            <input type="text" id="cardNumber" name="cardNumber" placeholder="e.g., 4111222233334444" required>
-                        </div>
-                        <div class="cvc-group">
-                            <label for="cvc">CVC <span class="required">*</span></label>
-                            <input type="text" id="cvc" name="cvc" placeholder="e.g., 123" required>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label for="nameOnCard">Name On Card <span class="required">*</span></label>
-                    <input type="text" id="nameOnCard" name="nameOnCard" placeholder="e.g., John Doe" required>
-                </div>
-
-                <div class="form-group">
-                    <div class="input-row">
-                        <div class="field-half">
-                            <label for="expMonth">Expiration Month <span class="required">*</span></label>
-                            <input type="text" id="expMonth" name="expMonth" placeholder="MM" pattern="\d{2}" maxlength="2" required>
-                        </div>
-                        <div class="field-half">
-                            <label for="expYear">Expiration Year <span class="required">*</span></label>
-                            <input type="text" id="expYear" name="expYear" placeholder="YY" pattern="\d{2}" maxlength="2" required>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label for="address">Address <span class="required">*</span></label>
-                    <input type="text" id="address" name="address" placeholder="e.g., Jl. Contoh No. 123" required>
-                </div>
-
-                <div class="form-group">
-                    <div class="input-row">
-                        <div class="field-half">
-                            <label for="city">City <span class="required">*</span></label>
-                            <input type="text" id="city" name="city" placeholder="e.g., Jakarta" required>
-                        </div>
-                        <div class="field-half">
-                            <label for="province">Province <span class="required">*</span></label>
-                            <input type="text" id="province" name="province" placeholder="e.g., DKI Jakarta" required>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label for="country">Country <span class="required">*</span></label>
-                    <input type="text" id="country" name="country" placeholder="e.g., Indonesia" required>
-                </div>
-
+            <div class="form-actions">
+                <button type="button" class="back-button" onclick="window.location.href='../html/subscription.html'">Back</button>
                 <button type="submit" class="purchase-button">Purchase</button>
-            </form>
-        </div>
-    </main>
+            </div>
+        </form>
+    </div>
+</main>
 
-    <footer class="footer">
-        <div class="footer-content">
-            <div class="footer-brand">
-                <h3>BeeYond</h3>
-                <p>©2025 BeeYond. All rights reserved.</p>
-            </div>
-            <div class="footer-links">
-                <span>Contact us</span>
-                <ul class="social-icons">
-                    <li><a href="https://instagram.com" target="_blank"><img src="../assets/lets-icons--insta.svg" alt="Instagram"></a></li>
-                    <li><a href="mailto:support@beeyond.com"><img src="../assets/material-symbols--mail-outline.svg" alt="Email"></a></li>
-                    <li><a href="tel:+628232894792"><img src="../assets/mdi--telephone.svg" alt="Telephone"></a></li>
-                </ul>
-            </div>
+<footer class="footer">
+    <div class="footer-content">
+        <div class="footer-brand">
+            <h3>BeeYond</h3>
+            <p>©2025 BeeYond. All rights reserved.</p>
         </div>
-    </footer>
-    <script src="../js/common.js"></script>
-    <script src="../js/payment.js"></script>
+        <div class="footer-links">
+            <span>Contact us</span>
+            <ul class="social-icons">
+                <li><a href="https://instagram.com" target="_blank"><img src="../assets/lets-icons--insta.svg" alt="Instagram"></a></li>
+                <li><a href="mailto:support@beeyond.com"><img src="../assets/material-symbols--mail-outline.svg" alt="Email"></a></li>
+                <li><a href="tel:+628232894792"><img src="../assets/mdi--telephone.svg" alt="Telephone"></a></li>
+            </ul>
+        </div>
+    </div>
+</footer>
+<script src="../js/common.js"></script>
+<script src="../js/payment.js"></script>
 </body>
 </html>

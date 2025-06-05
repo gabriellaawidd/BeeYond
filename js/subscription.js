@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     purchaseButtons.forEach(button => {
         button.addEventListener('click', (event) => {
+
             const planType = button.dataset.planType; 
 
             const planCard = button.closest('.plan');

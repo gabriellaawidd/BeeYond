@@ -1,4 +1,3 @@
-//Login Page
 const loginForm = document.getElementById('loginForm');
 const emailInput = document.getElementById('email');
 const passwordInput = document.getElementById('password');
@@ -8,9 +7,9 @@ const forgotPasswordLink = document.querySelector('.forgot-password');
 const signupLink = document.querySelector('.signup-link a');
 
 function validateEmail(email) {
-    return email.includes('@') && 
-           email.includes('.') && 
-           email.indexOf('@') > 0 && 
+    return email.includes('@') &&
+           email.includes('.') &&
+           email.indexOf('@') > 0 &&
            email.indexOf('@') < email.lastIndexOf('.') &&
            email.lastIndexOf('.') < email.length - 1;
 }
@@ -24,13 +23,13 @@ function showError(input, message) {
     if (existingError) {
         existingError.remove();
     }
-    
+
     input.classList.add('error');
-    
+
     const errorDiv = document.createElement('div');
     errorDiv.className = 'error-message';
     errorDiv.textContent = message;
-    
+
     input.parentNode.appendChild(errorDiv);
 }
 
@@ -46,9 +45,9 @@ function showSuccess(message) {
     const successDiv = document.createElement('div');
     successDiv.className = 'success-notification';
     successDiv.textContent = message;
-    
+
     document.body.appendChild(successDiv);
-    
+
     setTimeout(() => {
         successDiv.classList.add('slide-out');
         setTimeout(() => {
@@ -77,16 +76,16 @@ passwordInput.addEventListener('input', function() {
 
 loginForm.addEventListener('submit', function(e) {
     e.preventDefault();
-    
+
     const email = emailInput.value.trim();
     const password = passwordInput.value;
     const remember = rememberCheckbox.checked;
-    
+
     clearError(emailInput);
     clearError(passwordInput);
-    
+
     let isValid = true;
-    
+
     if (!email) {
         showError(emailInput, 'Email is required');
         isValid = false;
@@ -94,7 +93,7 @@ loginForm.addEventListener('submit', function(e) {
         showError(emailInput, 'Please enter a valid email address');
         isValid = false;
     }
-    
+
     if (!password) {
         showError(passwordInput, 'Password is required');
         isValid = false;
@@ -102,19 +101,21 @@ loginForm.addEventListener('submit', function(e) {
         showError(passwordInput, 'Password must be at least 8 characters');
         isValid = false;
     }
-    
+
     if (isValid) {
-        // Simulate login process
         const loginBtn = document.querySelector('.login-btn');
         const originalText = loginBtn.textContent;
-        
+
         loginBtn.textContent = 'Logging in...';
         loginBtn.disabled = true;
         loginBtn.classList.add('loading');
-        
+
         setTimeout(() => {
+            sessionStorage.setItem('isLoggedIn', 'true');
+            sessionStorage.setItem('userProfilePic', 'https://via.placeholder.com/32/758BFD/FFFFFF?text=J');
+
             showSuccess('Login successful! Welcome to BeeYond.');
-            
+
             if (remember) {
                 localStorage.setItem('rememberMe', 'true');
                 localStorage.setItem('userEmail', email);
@@ -122,42 +123,49 @@ loginForm.addEventListener('submit', function(e) {
                 localStorage.removeItem('rememberMe');
                 localStorage.removeItem('userEmail');
             }
-            
+
             loginBtn.textContent = originalText;
             loginBtn.disabled = false;
             loginBtn.classList.remove('loading');
-            
+
             setTimeout(() => {
-                console.log('Redirecting to dashboard...');
-                window.location.href = '../html/home.html';
+                const redirectUrl = sessionStorage.getItem('redirectAfterLogin') || '../html/home.html';
+                sessionStorage.removeItem('redirectAfterLogin');
+                window.location.href = redirectUrl;
             }, 1000);
         }, 2000);
     }
 });
 
-// Google login
 googleBtn.addEventListener('click', function() {
     const originalHTML = this.innerHTML;
-    
+
     this.innerHTML = '<span class="spinner"></span>Connecting to Google...';
     this.disabled = true;
     this.classList.add('loading');
-    
-    // Simulate Google OAuth
+
     setTimeout(() => {
         showSuccess('Google authentication would be implemented here');
-        
-        // Reset button
+
+        sessionStorage.setItem('isLoggedIn', 'true');
+        sessionStorage.setItem('userProfilePic', 'https://via.placeholder.com/32/FF8600/FFFFFF?text=G');
+
         this.innerHTML = originalHTML;
         this.disabled = false;
         this.classList.remove('loading');
+
+        setTimeout(() => {
+            const redirectUrl = sessionStorage.getItem('redirectAfterLogin') || '../html/home.html';
+            sessionStorage.removeItem('redirectAfterLogin');
+            window.location.href = redirectUrl;
+        }, 500);
     }, 1500);
 });
 
 forgotPasswordLink.addEventListener('click', function(e) {
     e.preventDefault();
     const email = emailInput.value.trim();
-    
+
     if (email && validateEmail(email)) {
         showSuccess('Password reset link sent to: ' + email);
     } else {
@@ -194,28 +202,28 @@ window.addEventListener('load', function() {
 document.addEventListener('DOMContentLoaded', function() {
     const inputs = document.querySelectorAll('input');
     const buttons = document.querySelectorAll('button');
-    
+
     inputs.forEach(input => {
         input.addEventListener('focus', function() {
             this.classList.add('focused');
         });
-        
+
         input.addEventListener('blur', function() {
             this.classList.remove('focused');
         });
     });
-    
+
     buttons.forEach(button => {
         button.addEventListener('mousedown', function() {
             if (!this.disabled) {
                 this.classList.add('pressed');
             }
         });
-        
+
         button.addEventListener('mouseup', function() {
             this.classList.remove('pressed');
         });
-        
+
         button.addEventListener('mouseleave', function() {
             this.classList.remove('pressed');
         });
