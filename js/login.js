@@ -177,7 +177,7 @@ forgotPasswordLink.addEventListener('click', function(e) {
 signupLink.addEventListener('click', function(e) {
     e.preventDefault();
     console.log('Redirect to sign up page');
-    window.location.href = '/signup';
+    window.location.href = '../html/signup.html';
 });
 
 rememberCheckbox.addEventListener('change', function() {
