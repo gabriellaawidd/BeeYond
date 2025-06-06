@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const prevButton = document.getElementById('prevButton');
     const nextButton = document.getElementById('nextButton');
     const progressBarFill = document.getElementById('progressBarFill');
-    const backToCourseDetailButton = document.getElementById('backToCourseDetail');
+    const backToCourseDetailButton = document.getElementById('backToCourseDetail') || document.getElementById('backToCourseDetailMedia');
     function loadQuestion() {
         const questionData = quizData[currentQuestionIndex];
         chapterTitleElement.textContent = questionData.chapter;
@@ -85,21 +85,27 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         userAnswers[currentQuestionIndex] = selectedOption;
     }
-
     function updateNavigationButtons() {
-        prevButton.disabled = currentQuestionIndex === 0;
-
+        let dis = currentQuestionIndex === 0;
+        prevButton.disabled = dis;
+        if(dis){
+            prevButton.classList.add('notable');
+        }
+        else{
+            prevButton.classList.remove('notable');
+        }
         if (currentQuestionIndex === quizData.length - 1) {
             nextButton.textContent = 'Submit';
-            nextButton.classList.add('next-submit-btn');
+            nextButton.classList.add('submit-btn');
+            nextButton.classList.remove('next-submit-btn')
         } else {
             nextButton.textContent = 'Next';
-            nextButton.classList.remove('next-submit-btn');
+            nextButton.classList.add('next-submit-btn')
+            nextButton.classList.remove('submit-btn')
         }
     }
-
     function updateProgressBar() {
-        const progress = ((currentQuestionIndex + 1) / quizData.length) * 100;
+        const progress = ((currentQuestionIndex) / quizData.length) * 100;
         progressBarFill.style.width = `${progress}%`;
     }
 

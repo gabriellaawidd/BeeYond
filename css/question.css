@@ -7,10 +7,15 @@
     --corner-radius-size: 12px;
     --highlight-text-color: var(--nav-color);
 }
+
 .quiz-container {
-    max-width: 900px;
-    margin: 40px auto;
-    padding: 20px;
+    width: 80%;
+    height: 80%;
+    margin: auto auto;
+    padding: 100px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     background-color: var(--background);
     border-radius: var(--corner-radius-size);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -24,17 +29,17 @@
 }
 
 .quiz-header .back-btn {
+    display: flex;
+    position: absolute;
+    left: 17%;
     background-color: #FFA726;
-    border: 1px solid #ccc;
+    border: 0;
     padding: 10px 20px;
     border-radius: 5px;
     cursor: pointer;
     font-weight: 500;
-    color: #555;
-    transition: background-color 0.3s ease, border-color 0.3s ease;
-}
-#backToCourseDetail {
     color: white;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 .quiz-header .back-btn:hover {
     background-color: var(--button-hover, #FF6F00);
@@ -60,10 +65,10 @@
 }
 
 .progress-bar-container {
-    width: 100%;
-    height: 10px;
-    background-color: #e0e0e0;
-    border-radius: 5px;
+    width: 50%;
+    height: 44px;
+    background-color: #1E1E1E;
+    border-radius: 12px;
     overflow: hidden;
     margin-bottom: 25px;
 }
@@ -71,22 +76,22 @@
 .progress-bar-fill {
     height: 100%;
     width: 0%;
-    background-color: #4CAF50;
-    border-radius: 5px;
+    background-color: #FF8600;
+    border-radius: 12px;
     transition: width 0.4s ease-in-out;
 }
 
 .question-box {
-    background-color: #333;
+    display: flex;
+    background-color: #1E1E1E;
     color: #fff;
-    padding: 25px;
+    padding: 36px 76px;
     border-radius: 8px;
     text-align: center;
-    margin-bottom: 25px;
     min-height: 120px;
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
 }
 
 .question-box p {
@@ -94,15 +99,23 @@
     font-weight: 600;
 }
 
+#questionText{
+    padding: 16px 16px;
+    border-radius: 12px;
+    color: var(--button);
+    background-color: #282828;
+    margin-bottom: 22px;
+}
+
 .options-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 20px;
+    grid-template-columns: 175px 175px;
+    gap: 14px 44px;
 }
 
 .option-btn {
-    background-color: #e0e0e0;
-    color: #333;
+    background-color: #AEB8FE;
+    color: white;
     border: none;
     padding: 15px 20px;
     border-radius: 8px;
@@ -136,43 +149,52 @@
 
 .quiz-navigation {
     display: flex;
+    flex-direction: row;
     justify-content: space-between;
     margin-top: 30px;
+    gap:25dvh;
+}
+#backToCourseDetailMedia{
+        display:none;
 }
 
-.nav-btn {
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    padding: 12px 25px;
-    border-radius: 5px;
+.nav-btn{
+    background-color: #FF8600;
+    border-radius: 12px;
+    padding: 8px 24px;
     cursor: pointer;
-    font-size: 16px;
-    font-weight: 600;
-    transition: background-color 0.3s ease;
+    color: white;
+    border: none;
 }
 
-.nav-btn:hover {
-    background-color: #0056b3;
+.nav-btn.notable{
+    color: rgb(224, 224, 224);
+    background-color: rgb(255, 134, 0,0.5);
+    cursor:default;
 }
-
-.nav-btn:disabled {
-    background-color: #cccccc;
-    cursor: not-allowed;
+.nav-btn.notable:hover{
+    background-color: rgb(255, 134, 0,0.5);
 }
-
-.next-submit-btn {
-    background-color: #4CAF50;
+.nav-btn.submit-btn{
+    background-color: #758BFD;
 }
-
-.next-submit-btn:hover {
-    background-color: #45a049;
+.nav-btn.submit-btn:hover{
+    background-color: #95a7ff;
 }
-
+.nav-btn:hover{
+    background-color: #ffa33a;
+}
 @media (max-width: 768px) {
+    #backToCourseDetail{
+        display: none;
+    }
+    #backToCourseDetailMedia{
+        top: 5%;
+        display:flex;
+    }
     .quiz-container {
         margin: 20px auto;
-        padding: 15px;
+        padding: 20px 40px;
     }
 
     .quiz-header {
@@ -201,9 +223,5 @@
     .quiz-navigation {
         flex-direction: column;
         gap: 15px;
-    }
-
-    .nav-btn {
-        width: 100%;
     }
 }
