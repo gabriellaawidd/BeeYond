@@ -4,32 +4,32 @@ document.addEventListener('DOMContentLoaded', function() {
     const quizData = [
         {
             chapter: "Chapter 1",
-            question: "Berapakah turunan dari fungsi $f(x) = x^2$?",
-            options: ["A. $x$", "B. $2x$", "C. $x^3/3$", "D. $2$"],
+            question: "What is the derivative of f(x) = x^2?",
+            options: ["A. x", "B. 2x", "C. x^3/3", "D. 2"],
             correctAnswer: "B"
         },
         {
             chapter: "Chapter 1",
-            question: "Integral dari $1/x$ adalah?",
-            options: ["A. $x$", "B. $\ln|x|$", "C. $-\frac{1}{x^2}$", "D. $1$"],
+            question: "What is the integral of 1/x?",
+            options: ["A. x", "B. ln|x|", "C. -1/x^2", "D. 1"],
             correctAnswer: "B"
         },
         {
             chapter: "Chapter 1",
-            question: "Jika $y = e^x$, maka $\frac{dy}{dx}$ adalah?",
-            options: ["A. $x e^{x-1}$", "B. $e^x$", "C. $e^{x+1}$", "D. $\ln x$"],
+            question: "If y = e^x, then dy/dx is?",
+            options: ["A. x e^{x-1}", "B. e^x", "C. e^{x+1}", "D. ln x"],
             correctAnswer: "B"
         },
         {
             chapter: "Chapter 1",
-            question: "Tentukan nilai dari $\int_{0}^{1} x \,dx$",
-            options: ["A. $0$", "B. $1/2$", "C. $1$", "D. $2$"],
+            question: "What is the value of ∫_{0}^{1} x,dx?",
+            options: ["A. 0", "B. 1/2", "C. 1", "D. 2"],
             correctAnswer: "B"
         },
         {
             chapter: "Chapter 1",
-            question: "Berapakah nilai dari $\frac{d}{dx}(\ln x)$?",
-            options: ["A. $x$", "B. $1/x$", "C. $e^x$", "D. $\ln x$"],
+            question: "What is the value of d/dx ln x?",
+            options: ["A. x", "B. 1/x", "C. e^x", "D. ln x"],
             correctAnswer: "B"
         }
     ];
@@ -90,10 +90,10 @@ document.addEventListener('DOMContentLoaded', function() {
         prevButton.disabled = currentQuestionIndex === 0;
 
         if (currentQuestionIndex === quizData.length - 1) {
-            nextButton.textContent = 'Kirim';
+            nextButton.textContent = 'Submit';
             nextButton.classList.add('next-submit-btn');
         } else {
-            nextButton.textContent = 'Berikutnya';
+            nextButton.textContent = 'Next';
             nextButton.classList.remove('next-submit-btn');
         }
     }
@@ -136,15 +136,16 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
 
-        alert(`Kuis selesai! Anda menjawab ${correctAnswersCount} dari ${quizData.length} pertanyaan dengan benar.`);
+        alert(`Quiz completed! You answered ${correctAnswersCount} out of ${quizData.length} questions correctly.`);
 
         if (incorrectQuestions.length > 0) {
-            let feedback = "Jawaban salah:\n";
+            let feedback = "Incorrect Answers:\n";
             incorrectQuestions.forEach((item, index) => {
-                feedback += `${index + 1}. Pertanyaan: ${item.question}\n   Jawaban Anda: ${item.userAnswer || 'Tidak dijawab'}\n   Jawaban Benar: ${item.correctAnswer}\n`;
+                feedback += `${index + 1}. Question: ${item.question}\n   Your Answer: ${item.userAnswer || 'Not answered'}\n   Correct Answer: ${item.correctAnswer}\n`;
             });
             alert(feedback);
         }
+        window.location.href = `coursedetail.html?course=${course}`;
     }
 
     if (backToCourseDetailButton) {
@@ -152,7 +153,7 @@ document.addEventListener('DOMContentLoaded', function() {
             if (history.length > 1) {
                 history.back();
             } else {
-                alert('Ini akan mengarahkan ke halaman Detail Course.');
+                alert('This will take you back to the Course Detail page.');
             }
         });
     }

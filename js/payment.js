@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const basePriceElement = document.getElementById('basePrice');
     const totalPriceElement = document.getElementById('totalPrice');
 
+    const selectedPlanType = sessionStorage.getItem('selectedPlanType');
     const storedBasePrice = parseFloat(sessionStorage.getItem('selectedPlanBasePrice'));
     const storedFormattedPrice = sessionStorage.getItem('selectedPlanFormattedPrice'); // This should already contain "/Month" or "/Year"
     const isLoggedIn = () => {
@@ -21,9 +22,14 @@ document.addEventListener('DOMContentLoaded', () => {
             purchaseButton.style.cursor = 'pointer';
             purchaseButton.style.opacity = '1';
         } else {
-            purchaseButton.disabled = true;
-            purchaseButton.style.cursor = 'not-allowed';
-            purchaseButton.style.opacity = '0.7';
+            purchaseButton.disabled = false;
+            purchaseButton.style.cursor = 'pointer';
+            purchaseButton.addEventListener('click',()=>{
+                alert("Harap melakukan login terlebih dahulu");
+                setTimeout(()=>{
+                    window.location.href = `login.html`;
+                },100)
+            });
         }
     };
 
@@ -80,8 +86,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const selectedMethod = document.querySelector('.method-box.selected').dataset.method;
         const formData = new FormData(paymentForm);
         const paymentData = {};
-
-        if (selectedMethod === 'Visa' || selectedMethod === 'MasterCard') {
+        if(isLoggedIn()){
+            if (selectedMethod === 'Visa' || selectedMethod === 'MasterCard') {
             paymentData.method = selectedMethod;
             paymentData.cardNumber = formData.get('cardNumber');
             paymentData.cvc = formData.get('cvc');
@@ -119,29 +125,42 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
 
-        } else if (selectedMethod === 'Paypal') {
-            paymentData.method = selectedMethod;
-            paymentData.paypalEmail = formData.get('paypalEmail');
-            if (!paymentData.paypalEmail || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(paymentData.paypalEmail)) {
-                alert('Please enter a valid PayPal email address.');
-                return;
+            } else if (selectedMethod === 'Paypal') {
+                paymentData.method = selectedMethod;
+                paymentData.paypalEmail = formData.get('paypalEmail');
+                if (!paymentData.paypalEmail || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(paymentData.paypalEmail)) {
+                    alert('Please enter a valid PayPal email address.');
+                    return;
+                }
+                alert('Redirecting to PayPal for payment...');
+            } else if (selectedMethod === 'Gpay') {
+                paymentData.method = selectedMethod;
+                alert('Initiating Google Pay transaction...');
             }
-            alert('Redirecting to PayPal for payment...');
-        } else if (selectedMethod === 'Gpay') {
-            paymentData.method = selectedMethod;
-            alert('Initiating Google Pay transaction...');
+            paymentData.basePrice = storedBasePrice;
+            localStorage.setItem('paymentData', JSON.stringify(paymentData));
+            const subscriptionData = {
+                plan: selectedPlanType,
+                done: true,
+            }
+            localStorage.setItem('subscriptionData', JSON.stringify(subscriptionData));
+            console.log('Payment data saved to localStorage:', paymentData);
+            console.log('Subscription data saved to localStorage:', subscriptionData);
+            const notificationBox = document.getElementById('notificationBox');
+            if (notificationBox) {
+                notificationBox.style.display = 'block';
+            }
+            const notificationMessage = document.getElementById('notificationMessage');
+            const notificationButton = document.getElementById('notificationButton');
+            if (notificationMessage) {
+                notificationMessage.innerHTML = `Payment for <b style = "color: var(--primary)">${selectedPlanType} plan</b> with <b style = "color: var(--primary)">${paymentData.method}</b> initiated! Your subscription is now active!`;
+            }
+            if (notificationButton) {
+                notificationButton.addEventListener('click', () => {
+                    window.location.href = '../html/course.html';
+                });
+            }
         }
-        paymentData.basePrice = storedBasePrice;
-        console.log('Payment Data Submitted:', paymentData);
-        localStorage.setItem('paymentData', JSON.stringify(paymentData));
-        const subscriptionData = {
-            plan: paymentData.basePrice,
-            done: true,
-        }
-        localStorage.setItem('subscriptionData', JSON.stringify(subscriptionData));
-        console.log('Payment data saved to localStorage:', paymentData);
-        console.log('Subscription data saved to localStorage:', subscriptionData);
-        alert(`Payment for ${selectedMethod} initiated! Your subscription is now active!`);
     });
 
     const calculateTotalPrice = (basePrice) => {

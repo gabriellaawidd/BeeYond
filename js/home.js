@@ -1,8 +1,29 @@
 document.addEventListener('DOMContentLoaded', function() {
     initializeProgressBars();
     initializeButtonInteractions();
-    initializeCourseCardInteractions();
+    
     initializeNotifications();
+
+    const isLoggedIn = sessionStorage.getItem('isLoggedIn') === 'true';
+    console.log('User logged in:', isLoggedIn);
+    if (!isLoggedIn) {
+        document.getElementById('welcome-message').textContent = 'Welcome to BeeYond';
+        document.getElementsByClassName('progress-section')[0].style.display = 'none';
+    }
+    else{
+        document.getElementsByClassName('popular-section')[0].style.display = 'none';
+    }
+
+    // const viewDetails = document.querySelectorAll('.view-detail');
+    // viewDetails.forEach(viewDetail => {
+    //     viewDetail.addEventListener('click', function(event){
+    //         event.preventDefault();
+    //         const courseName = viewDetail.closest('.course-card').querySelector('h3').textContent;
+    //         console.log(courseName);
+    //         viewDetail.href = `coursedetail.html?course=${courseName}`;
+    //     });
+    // });
+    initializeCourseCardInteractions();
 });
 
 function initializeProgressBars() {
@@ -32,24 +53,17 @@ function updateProgressBar(courseId, newProgress) {
 }
 
 function navigateToCourseDetail(courseName, courseType = 'general', courseId = null) {
-    const courseSlug = courseName.toLowerCase().replace(/\s+/g, '-');
-    let courseDetailUrl = `course-detail.html?course=${courseSlug}`;
-
-    if (courseId) {
-        courseDetailUrl += `&id=${courseId}`;
-    }
-    if (courseType) {
-        courseDetailUrl += `&type=${courseType}`;
-    }
+    const courseSlug = courseName;
+    let courseDetailUrl = `coursedetail.html?course=${courseSlug}`;
 
     showNotification(`Loading ${courseName} course...`, 'info', 2000);
 
     setTimeout(() => {
-        showCourseDetailModal(courseName, courseType, courseId);
+        showCourseDetailModal(courseName, courseType, courseId,courseDetailUrl);
     }, 1000);
 }
 
-function showCourseDetailModal(courseName, courseType, courseId) {
+function showCourseDetailModal(courseName, courseType, courseId,courseUrl) {
     const modalOverlay = document.createElement('div');
     modalOverlay.className = 'modal-overlay';
 
@@ -71,7 +85,7 @@ function showCourseDetailModal(courseName, courseType, courseId) {
         ${progressInfo}
         <p class="modal-description">This would navigate to the detailed course page with lessons, materials, and interactive content.</p>
         <div class="modal-buttons">
-            <button class="modal-btn continue-btn">Continue Learning</button>
+            <button class="modal-btn continue-btn">Go to course</button>
             <button class="modal-btn close-btn">Close</button>
         </div>
     `;
@@ -93,6 +107,9 @@ function showCourseDetailModal(courseName, courseType, courseId) {
                 updateProgressBar(courseId, newProgress);
             }, 1000);
         }
+        setTimeout(() => {
+        window.location.href = courseUrl;
+        }, 1500);
     });
 
     closeBtn.addEventListener('click', () => {
@@ -164,7 +181,7 @@ function initializeCourseCardInteractions() {
             }, 150);
 
             const courseName = this.querySelector('h3').textContent;
-
+            console.log(courseName);
             if (this.classList.contains('progress-card')) {
                 const courseId = this.getAttribute('data-course-id');
                 navigateToCourseDetail(courseName, 'In Progress', courseId);
@@ -234,4 +251,4 @@ window.BeeVondDashboard = {
         });
         showNotification('All courses completed!', 'success');
     }
-};
+}

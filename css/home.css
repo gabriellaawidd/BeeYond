@@ -74,6 +74,9 @@ body {
 }
 
 .welcome-section {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
     margin-bottom: 3rem;
     animation: fadeInUp 1s ease-out;
 }
@@ -81,7 +84,7 @@ body {
 .welcome-header h2 {
     font-size: 1.8rem;
     font-weight: 700;
-    color: var(--primary);
+    color: black;
     margin-bottom: 0.5rem;
 }
 
@@ -90,50 +93,22 @@ body {
     margin-bottom: 2rem;
 }
 
-.news-container {
-    display: grid;
-    grid-template-columns: 1fr 3fr 1fr;
-    gap: 0;
-    background-color: var(--primary);
-    border-radius: var(--corner-radius-size);
-    padding: 0;
-    color: white;
-    overflow: hidden;
-    border: var(--border-weight-size) solid var(--nav-color);
-}
-
-.news-left,
-.news-right {
-    padding: 2rem;
-}
-
-.news-center {
-    background-color: white;
-    color: var(--primary);
-    padding: 2rem;
+.news{
     display: flex;
-    flex-direction: column;
+    justify-content: space-between;
+    background-color: rgba(39, 24, 126, 0.8);
+    border-radius: 25px;
+    padding: 21px 31px;
     align-items: center;
-}
-
-.news-left h3,
-.news-right h3 {
-    font-size: 1.2rem;
-    margin-bottom: 1rem;
     color: white;
 }
-
-.news-center h3 {
-    font-size: 1.2rem;
-    margin-bottom: 1.5rem;
-    color: var(--primary);
-    text-align: center;
+.news-right{
+    text-align: end;
+    font-size: 12px;
 }
-
-.course-list,
-.news-list {
-    list-style: none;
-    padding: 0;
+.news-left{
+    text-align: start;
+    font-size: 16px;
 }
 
 .course-list a, .news-list a{
@@ -243,6 +218,10 @@ body {
     cursor: pointer;
 }
 
+.course-card a{
+    color: var(--button);
+}
+
 .course-card:hover {
     transform: translateY(-4px);
     box-shadow: 0 4px 12px rgba(39, 24, 126, 0.3);
@@ -297,8 +276,8 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    align-items: flex-start;
-    text-align: left;
+    align-items: center;
+    text-align: center;
 }
 
 .popular-card h3 {

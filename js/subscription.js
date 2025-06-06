@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (planCard) {
                 const priceElement = planCard.querySelector('.plan-price');
-                basePrice = parseFloat(priceElement.dataset.rawPrice); 
+                basePrice = parseFloat(priceElement.dataset.rawPrice);
                 formattedPrice = priceElement.textContent.trim(); 
             }
 

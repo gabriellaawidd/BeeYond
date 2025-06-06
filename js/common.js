@@ -77,6 +77,7 @@ document.addEventListener('DOMContentLoaded', () => {
             sessionStorage.removeItem('isLoggedIn');
             sessionStorage.removeItem('userName');
             sessionStorage.removeItem('userProfilePic');
+            localStorage.clear();
             updateAuthButtons();
             alert('You have been logged out.');
 
