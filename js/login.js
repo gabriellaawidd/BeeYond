@@ -112,7 +112,7 @@ loginForm.addEventListener('submit', function(e) {
 
         setTimeout(() => {
             sessionStorage.setItem('isLoggedIn', 'true');
-            sessionStorage.setItem('userProfilePic', 'https://via.placeholder.com/32/758BFD/FFFFFF?text=J');
+            sessionStorage.setItem('userProfilePic', '/assets/profileDefault.png');
 
             showSuccess('Login successful! Welcome to BeeYond.');
 
@@ -148,7 +148,7 @@ googleBtn.addEventListener('click', function() {
         showSuccess('Google authentication would be implemented here');
 
         sessionStorage.setItem('isLoggedIn', 'true');
-        sessionStorage.setItem('userProfilePic', 'https://via.placeholder.com/32/FF8600/FFFFFF?text=G');
+        sessionStorage.setItem('userProfilePic', '/assets/profileDefault.png');
 
         this.innerHTML = originalHTML;
         this.disabled = false;

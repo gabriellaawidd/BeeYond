@@ -11,9 +11,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const storedBasePrice = parseFloat(sessionStorage.getItem('selectedPlanBasePrice'));
     const storedFormattedPrice = sessionStorage.getItem('selectedPlanFormattedPrice'); // This should already contain "/Month" or "/Year"
-
     const isLoggedIn = () => {
-        return localStorage.getItem('isLoggedIn') === 'true';
+        return sessionStorage.getItem('isLoggedIn') === 'true';
     };
 
     const updatePurchaseButtonState = () => {
@@ -78,11 +77,6 @@ document.addEventListener('DOMContentLoaded', () => {
     paymentForm.addEventListener('submit', (event) => {
         event.preventDefault();
 
-        if (!isLoggedIn()) {
-            alert('Please login to complete your purchase.');
-            return;
-        }
-
         const selectedMethod = document.querySelector('.method-box.selected').dataset.method;
         const formData = new FormData(paymentForm);
         const paymentData = {};
@@ -137,8 +131,16 @@ document.addEventListener('DOMContentLoaded', () => {
             paymentData.method = selectedMethod;
             alert('Initiating Google Pay transaction...');
         }
-
+        paymentData.basePrice = storedBasePrice;
         console.log('Payment Data Submitted:', paymentData);
+        localStorage.setItem('paymentData', JSON.stringify(paymentData));
+        const subscriptionData = {
+            plan: paymentData.basePrice,
+            done: true,
+        }
+        localStorage.setItem('subscriptionData', JSON.stringify(subscriptionData));
+        console.log('Payment data saved to localStorage:', paymentData);
+        console.log('Subscription data saved to localStorage:', subscriptionData);
         alert(`Payment for ${selectedMethod} initiated! Your subscription is now active!`);
     });
 

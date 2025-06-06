@@ -1,4 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
+    const subscriptionData = JSON.parse(localStorage.getItem('subscriptionData'));
+    const subscribe = subscriptionData ? subscriptionData.done : false;
     const urlParams = new URLSearchParams(window.location.search);
     const courseNameParam = urlParams.get('course');
 
@@ -295,17 +297,41 @@ document.addEventListener('DOMContentLoaded', () => {
     const booksLink = document.querySelector('.books-link');
     const exerciseLink = document.querySelector('.exercise-link');
     const videosLink = document.querySelector('.videos-link');
-    if (booksLink) {
+    if (booksLink && subscribe) {
         booksLink.href = `books.html?course=${encodeURIComponent(courseNameParam)}`;
     }
-    if (exerciseLink) {
+    else{
+        booksLink.addEventListener('click', (e) => {
+            alert("You need to subscribe to access the books section.");
+        });
+        booksLink.href = `subscription.html`;
+    }
+    if (exerciseLink && subscribe) {
         exerciseLink.href = `exercise.html?course=${encodeURIComponent(courseNameParam)}`;
     }
-    if (videosLink) {
+    else{
+        exerciseLink.addEventListener('click', (e) => {
+            alert("You need to subscribe to access the exercise section.");
+        });
+        exerciseLink.href = `subscription.html`;
+    }
+    if (videosLink && subscribe) {
         videosLink.href = `videopage.html?course=${encodeURIComponent(courseNameParam)}`;
     }
-    if (reviewLink) {
+    else{
+        videosLink.addEventListener('click', (e) => {
+            alert("You need to subscribe to access the video section.");
+        });
+        videosLink.href = `subscription.html`;
+    }
+    if (reviewLink && subscribe) {
         reviewLink.href = `review.html?course=${encodeURIComponent(courseNameParam)}`;
+    }
+    else{
+        reviewLink.addEventListener('click', (e) => {
+            alert("You need to subscribe to access the review section.");
+        });
+        reviewLink.href = `subscription.html`;
     }
     if (courseData) {
       courseDetailPageTitle.textContent = `${decodedCourseName} - Course Detail - BeeYond`;
