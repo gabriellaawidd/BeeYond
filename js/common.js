@@ -25,6 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const updateAuthButtons = () => {
         const isLoggedIn = sessionStorage.getItem('isLoggedIn') === 'true';
+        sessionStorage.setItem('userProfilePic', '/assets/profileDefault.png');
         const userProfilePic = sessionStorage.getItem('userProfilePic');
 
         if (isLoggedIn) {
