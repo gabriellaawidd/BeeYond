@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BeeYond - Exercise</title>
-    <link rel="stylesheet" href="../css/style.css">
+    <!-- <link rel="stylesheet" href="../css/style.css"> -->
     <link rel="stylesheet" href="../css/question.css">
 </head>
 <body>
-<main class="quiz-container">
+<div class="quiz-container" id="quizContainer">
     <section class="quiz-header">
         <button type="button" class="back-btn" id="backToCourseDetail">Go Back to Course</button>
         <button type="button" class="back-btn" id="backToCourseDetailMedia">&lt</button>
@@ -34,7 +34,13 @@
             </div>
         </div>
     
-</main>
+    </div>
+    <div id="resultContainer" style="display:none;">
+        <h2>Exercise Result</h2>
+        <p id="resultSummary"></p>
+        <div id="incorrectAnswers"></div>
+        <a id="backToCourseBtn"href="course.html">Back to Course</a>
+    </div>
     <script src="../js/common.js"></script>
     <script src="../js/question.js"></script>
 </body>

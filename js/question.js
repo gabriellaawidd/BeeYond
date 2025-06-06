@@ -69,9 +69,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
         updateNavigationButtons();
         updateProgressBar();
-        if (typeof MathJax !== 'undefined') {
-            MathJax.typesetPromise([questionTextElement, optionsGrid]);
-        }
+        // if (typeof MathJax !== 'undefined') {
+        //     MathJax.typesetPromise([questionTextElement, optionsGrid]);
+        // }
     }
 
     function selectAnswer(selectedOption) {
@@ -142,16 +142,34 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
 
-        alert(`Quiz completed! You answered ${correctAnswersCount} out of ${quizData.length} questions correctly.`);
+        document.getElementById('quizContainer').style.display = 'none';
+        const resultContainer = document.getElementById('resultContainer');
+        resultContainer.style.display = 'flex';
 
+        // Show summary
+        document.getElementById('resultSummary').innerHTML =
+            `You answered <b>${correctAnswersCount}</b> out of <b>${quizData.length}</b> questions correctly.`;
+
+        // Show incorrect answers if any
+        const incorrectDiv = document.getElementById('incorrectAnswers');
         if (incorrectQuestions.length > 0) {
-            let feedback = "Incorrect Answers:\n";
+            let feedback = "<h3>Incorrect Answers:</h3><ul>";
             incorrectQuestions.forEach((item, index) => {
-                feedback += `${index + 1}. Question: ${item.question}\n   Your Answer: ${item.userAnswer || 'Not answered'}\n   Correct Answer: ${item.correctAnswer}\n`;
+                feedback += `<li>
+                    <b>Q${index + 1}:</b> ${item.question}<br>
+                    <span style="color:#c00;">Your Answer:</span> ${item.userAnswer || 'Not answered'}<br>
+                    <span style="color:#080;">Correct Answer:</span> ${item.correctAnswer}
+                </li>`;
             });
-            alert(feedback);
+            feedback += "</ul>";
+            incorrectDiv.innerHTML = feedback;
+        } else {
+            incorrectDiv.innerHTML = "<p>Great job! All answers are correct.</p>";
         }
-        window.location.href = `coursedetail.html?course=${course}`;
+
+        // Set back to course link
+        const backBtn = document.getElementById('backToCourseBtn');
+        backBtn.href = `exercise.html?course=${course}`;
     }
 
     if (backToCourseDetailButton) {

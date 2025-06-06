@@ -11,7 +11,7 @@
 .quiz-container {
     width: 80%;
     height: 80%;
-    margin: auto auto;
+    margin: 5dvh auto;
     padding: 100px 20px;
     display: flex;
     flex-direction: column;
@@ -183,6 +183,56 @@
 }
 .nav-btn:hover{
     background-color: #ffa33a;
+}
+#resultContainer{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    background-color: var(--background);
+    border-radius: var(--corner-radius-size);
+    margin: 5dvh 20dvh;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    padding: 5dvh;
+    justify-content: space-between;
+}
+#resultSummary{
+    color: white;
+    background-color: var(--button);
+    justify-content: center;
+    border-radius: 12px;
+    width: 50dvh;
+    padding: 1dvh;
+}
+#resultContainer ul{
+    list-style: none;
+    background-color: var(--button);
+    text-align: left;
+    padding: 2dvh;
+    border-radius: 12px;
+    color: black;
+    display: flex;
+    flex-direction: column;
+    gap: 2dvh;
+}
+
+#resultContainer h2{
+    margin: 0%;
+    color: white;
+    display: flex;
+    width: 20dvh;
+    padding:1dvh;
+    background-color: var(--button);
+    justify-content: center;
+    border-radius: 12px;
+}
+
+#backToCourseBtn{
+    background-color: var(--button);
+    border-radius: 12px;
+    padding:1dvh;
+    color: white;
+    text-decoration: none;
 }
 @media (max-width: 768px) {
     #backToCourseDetail{
