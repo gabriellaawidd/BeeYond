@@ -80,7 +80,7 @@ body {
 }
 
 .course-code {
-    background-color: var(--accent-orange);
+    background-color: var(--nav-color);
     color: white;
     padding: 6px 12px;
     border-radius: 6px;
@@ -144,7 +144,7 @@ body {
 }
 
 #detailRoadmapSections button{
-    background-color: var(--button);
+    background-color: var(--nav-color);
     color: white;
     border: none;
     padding: 10px 16px;
@@ -171,7 +171,7 @@ body {
 }
 
 .price-btn {
-    background-color: var(--nav-color);
+    background-color: var(--button);
     color: white;
     border: none;
     padding: 15px 30px;
@@ -392,6 +392,32 @@ body {
     background-color: #eef5fb;
     transform: translateY(-2px);
     box-shadow: 0 2px 8px var(--shadow-light);
+}
+
+.back-button-container {
+    text-align: center; 
+    margin-top: 40px; 
+    margin-bottom: 40px; 
+}
+
+.back-btn {
+    background-color: var(--button);
+    color: white;
+    padding: 12px 20px; 
+    border: none;
+    border-radius: 8px; 
+    cursor: pointer;
+    font-size: 18px; 
+    font-weight: 600; 
+    display: inline-flex;
+    align-items: center;
+    gap: 10px; 
+    transition: background-color 0.3s ease, transform 0.2s ease; 
+}
+
+.back-btn:hover {
+    background-color: #5a73e0;
+    transform: translateY(-2px); 
 }
 
 @media (max-width: 992px) {

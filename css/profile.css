@@ -170,15 +170,23 @@ body {
 .course-content {
     padding: 2rem;
     height: calc(100% - 8px);
-    display: flex;
     align-items: center;
     justify-content: center;
 }
 
 .course-name {
     color: white;
-    font-size: 1.2rem;
+    padding-bottom: 0.5rem;
+    font-size: 1.5rem;
     font-weight: 600;
+    text-align: center;
+    line-height: 1.4;
+}
+
+.semester {
+    color: white;
+    font-size: 1rem;
+    font-weight: 300;
     text-align: center;
     line-height: 1.4;
 }
