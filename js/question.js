@@ -44,7 +44,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const prevButton = document.getElementById('prevButton');
     const nextButton = document.getElementById('nextButton');
     const progressBarFill = document.getElementById('progressBarFill');
-    const backToCourseDetailButton = document.getElementById('backToCourseDetail') || document.getElementById('backToCourseDetailMedia');
+    const backToCourseDetailButton = ['backToCourseDetail', 'backToCourseDetailMedia'].map(id => document.getElementById(id)).filter(Boolean);
+    // document.getElementById('backToCourseDetail') || document.getElementById('backToCourseDetailMedia');
     function loadQuestion() {
         const questionData = quizData[currentQuestionIndex];
         chapterTitleElement.textContent = questionData.chapter;
@@ -69,9 +70,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
         updateNavigationButtons();
         updateProgressBar();
-        // if (typeof MathJax !== 'undefined') {
-        //     MathJax.typesetPromise([questionTextElement, optionsGrid]);
-        // }
     }
 
     function selectAnswer(selectedOption) {
@@ -146,11 +144,9 @@ document.addEventListener('DOMContentLoaded', function() {
         const resultContainer = document.getElementById('resultContainer');
         resultContainer.style.display = 'flex';
 
-        // Show summary
         document.getElementById('resultSummary').innerHTML =
             `You answered <b>${correctAnswersCount}</b> out of <b>${quizData.length}</b> questions correctly.`;
 
-        // Show incorrect answers if any
         const incorrectDiv = document.getElementById('incorrectAnswers');
         if (incorrectQuestions.length > 0) {
             let feedback = "<h3>Incorrect Answers:</h3><ul>";
@@ -172,15 +168,15 @@ document.addEventListener('DOMContentLoaded', function() {
         backBtn.href = `exercise.html?course=${course}`;
     }
 
-    if (backToCourseDetailButton) {
-        backToCourseDetailButton.addEventListener('click', function() {
+    backToCourseDetailButton.forEach(button => {
+        button.addEventListener('click', function() {
             if (history.length > 1) {
                 history.back();
             } else {
-                alert('This will take you back to the Course Detail page.');
+                window.location.href = `coursedetail.html?course=${course}`;
             }
         });
-    }
+    });
     if (course) {
         const backToCourseLink = document.querySelector('#backToCourseDetail');
         if (backToCourseLink) {
