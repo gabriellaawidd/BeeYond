@@ -168,6 +168,10 @@ googleBtn.addEventListener('click', function() {
         this.disabled = false;
         this.classList.remove('loading');
     }, 1500);
+
+    setTimeout(()=>{
+        window.location.href = 'login.html';
+    },2000)
 });
 
 loginLink.addEventListener('click', function(e) {

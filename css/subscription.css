@@ -25,14 +25,13 @@ body {
     flex-direction: column;
 }
 
-/* Main Content Wrapper */
 .container {
     flex: 1;
     max-width: 1200px;
     margin: 0 auto;
     padding: 2rem;
     width: 100%;
-    display: flex; /* Added flex to center subscription-content if needed */
+    display: flex; 
     justify-content: center;
     align-items: center;
 }
@@ -42,19 +41,19 @@ body {
     border-radius: var(--corner-radius-size);
     padding: 3rem 2rem;
     text-align: center;
-    width: 100%; /* Ensure it takes full width of container */
+    width: 100%; 
 }
 
 .main-heading {
     font-size: 2.5rem;
-    color: #333; /* Default text color */
+    color: #333; 
     margin-bottom: 1.5rem;
     line-height: 1.2;
-    font-family: 'DM Serif Text', serif; /* Apply DM Serif Text font */
+    font-family: 'DM Serif Text', serif; 
 }
 
 .highlight {
-    color: var(--highlight-text-color); /* Using a dedicated variable for highlight */
+    color: var(--highlight-text-color); 
 }
 
 .description {
@@ -69,43 +68,34 @@ body {
     display: flex;
     justify-content: center;
     gap: 2rem;
-    flex-wrap: wrap; /* Allows plans to wrap to the next line on smaller screens */
+    flex-wrap: wrap; 
 }
 
 .plan {
-    flex: 1; /* Allow cards to grow/shrink based on available space */
-    min-width: 300px; /* Minimum width for the cards */
-    max-width: 400px; /* Maximum width for the cards */
+    flex: 1; 
+    min-width: 300px; 
+    max-width: 400px; 
     padding: 2rem;
     border-radius: var(--corner-radius-size);
-    /* color: white; <-- REMOVED: Specific elements will get their color */
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.plan:hover {
-    transform: translateY(-5px); /* Slight lift on hover */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.monthly-plan {
     background-color: var(--primary);
 }
 
-.yearly-plan {
-    background-color: #222; /* Darker background for yearly plan */
+.plan:hover {
+    transform: translateY(-5px); 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Text colors inside plan cards */
 .plan h2,
 .plan ul,
 .plan li,
 .plan .plan-price,
 .plan .discount {
-    color: white; /* All text inside plan cards should be white */
+    color: white; 
 }
 
 .plan-title {
@@ -114,36 +104,36 @@ body {
 }
 
 .plan-features {
-    list-style-type: none; /* Remove default list style */
+    list-style-type: none; 
     margin-bottom: 2rem;
-    padding: 0; /* Reset padding from ul */
+    padding: 0; 
     text-align: left;
 }
 
 .plan-features li {
     margin-bottom: 0.5rem;
     text-align: left;
-    position: relative; /* For custom bullet point */
-    padding-left: 1.5rem; /* Space for custom bullet point */
-    font-size: 1.1rem; /* Slightly larger font for features */
+    position: relative; 
+    padding-left: 1.5rem; 
+    font-size: 1.1rem;
 }
 
 .plan-features li::before {
-    content: '•'; /* Unicode bullet character */
+    content: '•'; 
     position: absolute;
     left: 0;
-    color: white; /* Bullet color */
-    font-size: 1.2em; /* Size of the bullet */
-    line-height: 1; /* Adjust line-height to align with text */
-    top: 50%; /* Center vertically */
-    transform: translateY(-50%); /* Adjust for perfect vertical centering */
+    color: white; 
+    font-size: 1.2em; 
+    line-height: 1; 
+    top: 50%; 
+    transform: translateY(-50%); 
 }
 
 .plan-price {
-    font-size: 1.6rem; /* Slightly larger price text */
+    font-size: 1.6rem; 
     font-weight: bold;
     margin-bottom: 2rem;
-    margin-top: auto; /* Pushes the button to the bottom */
+    margin-top: auto; 
 }
 
 .discount {
@@ -156,7 +146,7 @@ body {
 
 .purchase-btn {
     background-color: white;
-    color: #333; /* Default text color for purchase button */
+    color: #333; 
     border: none;
     padding: 0.8rem 1.5rem;
     border-radius: var(--corner-radius-size);
@@ -164,7 +154,7 @@ body {
     cursor: pointer;
     font-size: 1rem;
     transition: all 0.2s ease;
-    white-space: nowrap; /* Prevent button text from wrapping */
+    white-space: nowrap; 
 }
 
 .purchase-btn:hover {
@@ -173,20 +163,14 @@ body {
 }
 
 .highlight-btn {
-    background-color: var(--button); /* Use --button for highlight-btn (yearly plan) */
-    color: white; /* Ensure text is white for highlight-btn */
+    background-color: var(--button); 
+    color: white; 
 }
 
 .highlight-btn:hover {
-    background-color: #e67300; /* Darker shade of --button on hover */
-    /* Remove transform: translateY(-2px); and box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-       if you want a consistent hover effect with the default purchase-btn,
-       otherwise, ensure this one also has it if needed.
-       For consistency, I'll let the base .purchase-btn:hover handle it.
-    */
+    background-color: #e67300; 
 }
 
-/* Responsive Design */
 @media (max-width: 768px) {
     .container {
         padding: 1rem; 
