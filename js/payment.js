@@ -25,10 +25,20 @@ document.addEventListener('DOMContentLoaded', () => {
             purchaseButton.disabled = false;
             purchaseButton.style.cursor = 'pointer';
             purchaseButton.addEventListener('click',()=>{
-                alert("Harap melakukan login terlebih dahulu");
-                setTimeout(()=>{
-                    window.location.href = `login.html`;
-                },100)
+                const loginNotif = document.getElementById('loginNotif');
+                if (loginNotif) {
+                    loginNotif.style.display = 'block';
+                }
+                const loginMessage = document.getElementById('loginMessage');
+                const loginButton = document.getElementById('loginButton');
+                if (loginMessage) {
+                    loginMessage.innerHTML = `You need to login first to subscribe.`;
+                }
+                if (loginButton) {
+                    loginButton.addEventListener('click', () => {
+                        window.location.href = '../html/login.html';
+                    });
+                }
             });
         }
     };

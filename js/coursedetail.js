@@ -302,6 +302,29 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     else{
         booksLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            const notificationBox = document.getElementById('notificationBox');
+            if (notificationBox) {
+                notificationBox.style.display = 'block';
+            }
+            const notificationMessage = document.getElementById('notificationMessage');
+            const notificationButton = document.getElementById('notificationButton');
+            if (notificationMessage) {
+                notificationMessage.innerHTML = `You need to subscribe to access the book section.`;
+            }
+            if (notificationButton) {
+                notificationButton.addEventListener('click', () => {
+                    window.location.href = '../html/subscription.html';
+                });
+            }
+        });
+    }
+    if (exerciseLink && subscribe) {
+        exerciseLink.href = `exercise.html?course=${encodeURIComponent(courseNameParam)}`;
+    }
+    else{
+        exerciseLink.addEventListener('click', (e) => {
+            e.preventDefault();
             const notificationBox = document.getElementById('notificationBox');
             if (notificationBox) {
                 notificationBox.style.display = 'block';
@@ -313,38 +336,32 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             if (notificationButton) {
                 notificationButton.addEventListener('click', () => {
-                    window.location.href = '../html/course.html';
+                    window.location.href = '../html/subscription.html';
                 });
             }
         });
-        booksLink.href = `subscription.html`;
-    }
-    if (exerciseLink && subscribe) {
-        exerciseLink.href = `exercise.html?course=${encodeURIComponent(courseNameParam)}`;
-    }
-    else{
-        exerciseLink.addEventListener('click', (e) => {
-            alert("You need to subscribe to access the exercise section.");
-        });
-        exerciseLink.href = `subscription.html`;
     }
     if (videosLink && subscribe) {
         videosLink.href = `videopage.html?course=${encodeURIComponent(courseNameParam)}`;
     }
     else{
         videosLink.addEventListener('click', (e) => {
-            alert("You need to subscribe to access the video section.");
+            e.preventDefault();
+            const notificationBox = document.getElementById('notificationBox');
+            if (notificationBox) {
+                notificationBox.style.display = 'block';
+            }
+            const notificationMessage = document.getElementById('notificationMessage');
+            const notificationButton = document.getElementById('notificationButton');
+            if (notificationMessage) {
+                notificationMessage.innerHTML = `You need to subscribe to access the video section.`;
+            }
+            if (notificationButton) {
+                notificationButton.addEventListener('click', () => {
+                    window.location.href = '../html/subscription.html';
+                });
+            }
         });
-        videosLink.href = `subscription.html`;
-    }
-    if (reviewLink && subscribe) {
-        reviewLink.href = `review.html?course=${encodeURIComponent(courseNameParam)}`;
-    }
-    else{
-        reviewLink.addEventListener('click', (e) => {
-            alert("You need to subscribe to access the review section.");
-        });
-        reviewLink.href = `subscription.html`;
     }
     if (courseData) {
       courseDetailPageTitle.textContent = `${decodedCourseName} - Course Detail - BeeYond`;

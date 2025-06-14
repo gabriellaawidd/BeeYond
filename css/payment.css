@@ -162,7 +162,7 @@ body {
     box-shadow: 0 2px 5px rgba(0,0,0,0.05);
 }
 
-#notificationButton {
+#notificationButton, #loginButton {
     margin-top: 1rem;
     padding: 0.5rem 1rem;
     background: var(--button);
@@ -172,7 +172,7 @@ body {
     cursor: pointer;
 }
 
-#notificationBox {
+#notificationBox,#loginNotif {
     display: none;
     position: fixed;
     top: 50%;

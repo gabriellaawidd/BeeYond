@@ -290,6 +290,32 @@ body {
     margin: 0;
 }
 
+#notificationButton {
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    background: var(--button);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#notificationBox {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: var(--nav-color);
+    color: #fff;
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    z-index: 9999;
+    font-size: 1.1rem;
+    box-shadow: 0 4px 16px rgba(0,0,0,1);
+    text-align: center;
+}
+
 .social-link a {
     color: white;
     font-size: 1.2rem;
@@ -315,7 +341,7 @@ body {
         align-items: center;
         gap: 4dvh;
     }
-    
+
     .nav-menu {
         display: none;
     }
