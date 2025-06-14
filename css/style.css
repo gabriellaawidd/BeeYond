@@ -309,6 +309,13 @@ body {
         gap: 1rem;
     }
 
+    .logo{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 4dvh;
+    }
+    
     .nav-menu {
         display: none;
     }
@@ -327,7 +334,6 @@ body {
         box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         z-index: 999;
         padding: 1rem 0;
-        /* border-radius: var(--corner-radius-size); */
         flex-direction: column;
         align-items: center;
     }

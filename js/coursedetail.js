@@ -302,7 +302,20 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     else{
         booksLink.addEventListener('click', (e) => {
-            alert("You need to subscribe to access the books section.");
+            const notificationBox = document.getElementById('notificationBox');
+            if (notificationBox) {
+                notificationBox.style.display = 'block';
+            }
+            const notificationMessage = document.getElementById('notificationMessage');
+            const notificationButton = document.getElementById('notificationButton');
+            if (notificationMessage) {
+                notificationMessage.innerHTML = `You need to subscribe to access the exercise section.`;
+            }
+            if (notificationButton) {
+                notificationButton.addEventListener('click', () => {
+                    window.location.href = '../html/course.html';
+                });
+            }
         });
         booksLink.href = `subscription.html`;
     }

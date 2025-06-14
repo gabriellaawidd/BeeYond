@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BeeYond</title>
     <link rel="stylesheet" href="../css/login.css">
-    <link rel="stylesheet" href="../css/style.css">
+    <!-- <link rel="stylesheet" href="../css/style.css"> -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -48,11 +48,12 @@
                         </svg>
                         Login with Google
                     </button>
-                    <button type="submit" class="login-btn">Log In</button>
+                    <div class="button-group">
+                        <button type="submit" class="login-btn">Log In</button>
+                        <button class="login-btn" onclick="window.location.href = 'home.html'">Back To Home</button>  
+                    </div> 
                 </form>
-                <div>
-                    <button class="login-btn" onclick="window.location.href = 'home.html'">Back To Home</button>
-                </div>
+
                 <div class="signup-link">
                     Don't have account? <a href="../html/signup.html">Sign Up</a>
                 </div>
