@@ -2,11 +2,11 @@
   "rewrites": [
     {
       "source": "/",
-      "destination": "/home.html"
+      "destination": "/html/home.html"
     },
     {
       "source": "/(.*)",
-      "destination": "/$1"
+      "destination": "/html/$1"
     }
   ]
 }
